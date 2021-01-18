@@ -1,0 +1,119 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Civilia ~ Registre des personnes{% endblock %}
+
+{% block body %}
+
+ <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Registre des personnes</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Personnes</a></li>
+              <li class="breadcrumb-item active">Registre</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">            
+
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Liste des personnes inscrites dans le registre d'Etat Civil</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Né(e) le</th>
+                    <th>Né(e) en colline</th>
+                    <th>Né(e) en zone</th>
+                    <th>Né(e) en communne</th>
+                    <th>Né(e) en province</th>
+                    <th>Statut vital</th>
+                    <th>Sexe</th>
+                    <th>Colline de résidence</th>
+                    <th>Zone de résidence</th>
+                    <th>Commune de résidence</th>
+                    <th>Province de résidence</th>
+                    <th>N° CNI</th>
+                    <th>Profession</th>
+                    <th>Action</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for personne in personnes %}
+                  <tr>
+                    <td>{{personne.id}}</td>
+                    <td>{{personne.nom}}</td>
+                    <td>{{personne.prenom}}</td>
+                    <td>{{personne.dateNaissance | date("d/m/Y")}}</td>
+                    <td>{{personne.collineNaissance}}</td>
+                    <td>{{personne.zoneNaissance}}</td>
+                    <td>{{personne.communeNaissance}}</td>
+                    <td>{{personne.provinceNaissance}}</td>
+                    <td>{{personne.statusVital}}</td>
+                    <td>{{personne.sexe}}</td>
+                    <td>{{personne.collineResidence}}</td>
+                    <td>{{personne.zoneResidence}}</td>
+                    <td>{{personne.communeResidence}}</td>
+                    <td>{{personne.provinceResidence}}</td>
+                    <td>{{personne.numeroCarteNationaleIdentite}}</td>
+                    <td>{{personne.profession}}</td>
+                    <td></td>
+                  </tr>
+                  {% endfor %}
+                  </tbody>
+                  <tfoot>
+                  <tr>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Né(e) le</th>
+                    <th>Né(e) en colline</th>
+                    <th>Né(e) en zone</th>
+                    <th>Né(e) en communne</th>
+                    <th>Né(e) en province</th>
+                    <th>Statut vital</th>
+                    <th>Sexe</th>
+                    <th>Colline de résidence</th>
+                    <th>Zone de résidence</th>
+                    <th>Commune de résidence</th>
+                    <th>Province de résidence</th>
+                    <th>N° CNI</th>
+                    <th>Profession</th>
+                    <th>Action</th>
+                  </tr>
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+{% endblock %}

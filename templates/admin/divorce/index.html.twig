@@ -1,0 +1,110 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Civilia ~ Registre des divorces{% endblock %}
+
+{% block body %}
+
+ <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Registre des divorces</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Divorces</a></li>
+              <li class="breadcrumb-item active">Registre</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">            
+
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Liste des divorces enregistrés dans le registre d'Etat Civil</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>N°</th>
+                    <th>Date mariage</th>
+                    <th>Célébré en commune</th>
+                    <th>Province</th>
+                    <th>Noms Epoux</th>
+                    <th>Noms Epouse</th>
+                    <th>Date divorce</th>
+                    <th>Lieu divorce</th>
+                    <th>Profession Epoux</th>
+                    <th>Profession Epouse</th>
+                    <th>Référence décision divorce</th>
+                    <th>Nombre d'enfants issus du mariage</th>
+                    <th>Action</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for divorce in divorces %}
+                  <tr>
+                    <td>{{divorce.id}}</td>
+                    <td>{{divorce.mariage.dateMariage | date("d/m/Y")}}</td>
+                    <td>{{divorce.mariage.communeMariage}}</td>
+                    <td>{{divorce.mariage.provinceMariage}}</td>
+                    <td>{{divorce.mariage.personneEpoux}}</td>
+                    <td>{{divorce.mariage.personneEpouse}}</td>
+                    <td>{{divorce.datedivorce | date("d/m/Y")}}</td>
+                    <td>{{divorce.lieuDecisionDivorce}}</td>
+                    <td>{{divorce.professionEpoux}}</td>
+                    <td>{{divorce.professionEpouse}}</td>
+                    <td>{{divorce.referenceDecisionDivorce}}</td>
+                    <td>{{divorce.nombreEnfantsIssusMariage}}</td>
+                    <td>
+                      <a href="#" class="btn btn-xs btn-primary mb-2"><i class="fas fa-pencil-alt"></i></a>
+                      <a href="#" class="btn btn-xs btn-danger mb-2"><i class="fas fa-trash-alt"></i></a>
+                    </td>
+                  </tr>                      
+                  {% endfor %}                 
+                  </tbody>
+                  <tfoot>
+                  <tr>
+                    <th>N°</th>
+                    <th>Date mariage</th>
+                    <th>Célébré en commune</th>
+                    <th>Province</th>
+                    <th>Noms Epoux</th>
+                    <th>Noms Epouse</th>
+                    <th>Date divorce</th>
+                    <th>Lieu divorce</th>
+                    <th>Profession Epoux</th>
+                    <th>Profession Epouse</th>
+                    <th>Référence décision divorce</th>
+                    <th>Nombre d'enfants issus du mariage</th>
+                    <th>Action</th>
+                  </tr>
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+{% endblock %}

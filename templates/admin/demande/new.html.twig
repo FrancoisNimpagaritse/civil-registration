@@ -1,0 +1,144 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Civilia ~ Délivrer un document{% endblock %}
+
+{% block body %}
+
+ <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Fiche pour traiter une délivrance de document</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Demande</a></li>
+              <li class="breadcrumb-item active">nouvelle</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">            
+
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Fiche pour délivrer un document d'Etat Civil à délivrer</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+              <form action="" method="post">
+        <div class="card">
+            <h3 class="card-header bg-primary text-white">Dépense N° : {{numExp}}</h3>
+            <div class="card-body"> 
+                <!-- ENTETE FACTURE -->
+                <div class="row">        
+                    <div class="col-md-4">                        
+
+                      {{form_start(form)}}
+                      {{form_widget(form)}}
+                      {{form_end(form)}}
+
+                      <a href="{{ path('expense_index') }}">Retour liste</a>
+                    </div>
+                    <div class="col-md-8"></div>
+                </div>
+                <!-- FIN ENTETE FACTURE -->
+                <!-- LIGNE DE RECHERCHE PRODUIT -->            
+                <table class="table">
+                    <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Désignation du produit</th>
+                        <th scope="col">Quantité</th>
+                        <th scope="col">Prix unitaire</th>
+                        <th scope="col">TVA</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>{{form_widget(formDetail.product)}}</td>        
+                        <td>{{form_widget(formDetail.quantity)}}</td>
+                        <td>{{form_widget(formDetail.unitPrice)}}</td>
+                        <td>{{form_widget(formDetail.tva)}}</td>                
+                        <td><input type="submit" value="Ajouter" name="bt" class="btn btn-warning text-white"></td>
+                    </tr>
+                    
+                    </tbody>
+                </table>
+                <!-- FIN LIGNE DE RECHERCHE PRODUIT -->
+                <!-- TABLE DETAILS -->  
+                <table class="table table-bordered table-hover">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Désignation</th>
+                        <th scope="col">Quantité</th>
+                        <th scope="col">Prix unitaire</th>
+                        <th scope="col">Montant HT</th>
+                        <th scope="col">TVA</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for lineExp in linesExp %}
+                    <tr>
+                        <td class="col-md-1">{{lineExp.product.designation}}</td>
+                        <td class="col-md-1">{{lineExp.quantity}}</td>       
+                        <td class="col-md-1">{{lineExp.unitPrice | number_format(2)}}</td>
+                        <td class="col-md-1">{{(lineExp.quantity * lineExp.unitprice) | number_format(2)}}</td>
+                        <td class="col-md-1">{{(lineExp.quantity * lineExp.unitprice * lineExp.Tva / 100 ) | number_format(2)}}</td>
+                        <td>
+                            <input type="submit" value="Supprimer" name="bt" class="btn btn-danger text-white">
+                        </td>
+                    </tr>
+                    {% set totalHt = totalHt + (lineExp.quantity * lineExp.unitPrice) %}
+                    {% set totalTva = totalTva + ((lineExp.quantity * lineExp.unitPrice) * lineExp.tva * 0.01) %}
+                    {% set totalTtc = totalTtc + (((lineExp.quantity * lineExp.unitPrice) * (100+ lineExp.tva )) * 0.01) %}
+                    
+                    {% endfor %}       
+                    </tbody>            
+                </table>
+      
+                <!-- FIN TABLE DETAILS -->
+                <hr>
+                <!-- RECAPITUALTIF -->
+                <tfooter>
+                    <table class="table table-condensed">
+                        <tr class="col">
+                        <td><strong>Total HT: </strong></td><td><strong>{{totalHt | number_format(2)}}</strong></td>
+                        <td><strong>Total TVA: </strong></td><td><strong>{{totalTva | number_format(2)}}</strong></td>
+                        <td><strong>Total TTC: </strong></td><td><strong>{{totalTtc | number_format(2)}}</strong></td>
+                        </tr>
+                    </table>
+                <tfooter>
+                <!-- END RECAPITULATIF -->
+                <div class="mt-3">
+                    <input type="submit" value="Valider" name="bt" class="btn btn-success btn-block">
+                </div>
+                </div>
+            
+        </div>
+     </form>     
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+{% endblock %}

@@ -118,6 +118,11 @@ class Naissance
      */
     private $personne;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $professionPere;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -359,6 +364,18 @@ class Naissance
     public function setPersonne(Personne $personne): self
     {
         $this->personne = $personne;
+
+        return $this;
+    }
+
+    public function getProfessionPere(): ?string
+    {
+        return $this->professionPere;
+    }
+
+    public function setProfessionPere(?string $professionPere): self
+    {
+        $this->professionPere = $professionPere;
 
         return $this;
     }

@@ -39,6 +39,11 @@ class DetailDemande
      */
     private $document;
 
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
+    private $ligne;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -88,6 +93,18 @@ class DetailDemande
     public function setDocument(?Document $document): self
     {
         $this->document = $document;
+
+        return $this;
+    }
+
+    public function getLigne(): ?string
+    {
+        return $this->ligne;
+    }
+
+    public function setLigne(string $ligne): self
+    {
+        $this->ligne = $ligne;
 
         return $this;
     }

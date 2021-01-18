@@ -1,0 +1,152 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Civilia ~ Editer un mariage{% endblock %}
+
+{% block body %}
+
+ <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Fiche d'édition de mariage</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Mariages</a></li>
+              <li class="breadcrumb-item active">édition</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">            
+
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Modifier les détails d'un mariage inscrit dans le registre de l'Etat Civil</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                {{form_start(form)}}
+                <div class=" row">
+                    <div class="col">
+                    {{form_row(form.dateMariage)}}
+                    </div>
+                    <div class="col">
+                    {{form_row(form.communeMariage)}}
+                    </div>
+                    <div class="col">
+                    {{form_row(form.provinceMariage)}}
+                    </div>
+                    <div class="col"> 
+                    {{form_row(form.numeroActeMariage)}}
+                    </div>
+                    <div class="col"> 
+                    {{form_row(form.numeroVolume)}}
+                    </div>
+                </div>
+                <hr class="bg-danger">
+                <div class=" row">
+                    <div class="col">
+                    {{form_row(form.personneEpoux)}}
+                    </div>                    
+                    <div class="col">
+                    {{form_row(form.collineResidenceEpoux)}}
+                    </div>
+                    <div class="col">
+                    {{form_row(form.ZoneResidenceEpoux)}}
+                    </div>
+                    <div class="col">
+                    {{form_row(form.communeResidenceEpoux)}}
+                    </div>
+                    {{form_row(form.provinceResidenceEpoux)}}            
+                </div>
+                <div class=" row">
+                    <div class="col">
+                    {{form_row(form.occupationEpoux)}}
+                    </div>
+                    <div class="col">
+                    {{form_row(form.nomCompletPereEpoux)}}
+                    </div>
+                    <div class="col">
+                    {{form_row(form.nomCompletMereEpoux)}}
+                    </div>
+                </div>
+                <hr class="bg-danger">
+                <div class=" row">
+                  <div class="col">
+                  {{form_row(form.personneEpouse)}}
+                  </div>
+                  <div class="col"> 
+                  {{form_row(form.collineResidenceEpouse)}}
+                  </div>
+                  <div class="col"> 
+                  {{form_row(form.zoneResidenceEpouse)}}
+                  </div> 
+                  <div class="col"> 
+                  {{form_row(form.communeResidenceEpouse)}}
+                  </div>
+                  <div class="col"> 
+                  {{form_row(form.provinceResidenceEpouse)}}
+                  </div>                  
+                </div>             
+                
+                <div class=" row">
+                  <div class="col"> 
+                  {{form_row(form.occupationEpouse)}}
+                  </div>
+                  <div class="col">  
+                  {{form_row(form.nomCompletPereEpouse)}}
+                  </div>
+                  <div class="col"> 
+                  {{form_row(form.nomCompletMereEpouse)}}
+                  </div>
+                  <div class="col"> 
+                  {{form_row(form.nomCompletTemoinEpoux)}}
+                  </div>
+                  <div class="col"> 
+                  {{form_row(form.nomCompletTemoinEpouse)}}
+                  </div>
+                </div>
+                <div class=" row">
+                  <div class="col">  
+                  {{form_row(form.adresseTemoinEpoux)}}
+                  </div>
+                  <div class="col">
+                  {{form_row(form.adresseTemoinEpouse)}}
+                  </div>
+                  <div class="col">
+                  {{form_row(form.professionTemoinEpoux)}}
+                  </div>
+                  <div class="col">
+                  {{form_row(form.professionTemoinEpouse)}}
+                  </div>
+                  <div class="col">
+                  {{form_row(form.photoPreuve)}}
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-success">Valider les modifications</button>
+                {{form_end(form)}}
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+{% endblock %}

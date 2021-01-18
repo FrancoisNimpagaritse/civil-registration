@@ -30,11 +30,6 @@ class Personne
     private $prenom;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $naissanceDate;
-
-    /**
      * @ORM\Column(type="date", nullable=true)
      */
     private $dateNaissance;
@@ -107,7 +102,7 @@ class Personne
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $prefession;
+    private $profession;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -149,11 +144,28 @@ class Personne
      */
     private $demandes;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Deces::class, mappedBy="personne", cascade={"persist", "remove"})
+     */
+    private $deces;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Mariage::class, mappedBy="personneEpoux")
+     */
+    private $epouxmariages;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Mariage::class, mappedBy="personneEpouse")
+     */
+    private $epousemariages;
+
     public function __construct()
     {
         $this->pereenfants = new ArrayCollection();
         $this->mereenfants = new ArrayCollection();
         $this->demandes = new ArrayCollection();
+        $this->epouxmariages = new ArrayCollection();
+        $this->epousemariages = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -184,19 +196,7 @@ class Personne
 
         return $this;
     }
-
-    public function getNaissanceDate(): ?string
-    {
-        return $this->naissanceDate;
-    }
-
-    public function setNaissanceDate(string $naissanceDate): self
-    {
-        $this->naissanceDate = $naissanceDate;
-
-        return $this;
-    }
-
+    
     public function getDateNaissance(): ?\DateTimeInterface
     {
         return $this->dateNaissance;
@@ -365,14 +365,14 @@ class Personne
         return $this;
     }
 
-    public function getPrefession(): ?string
+    public function getProfession(): ?string
     {
-        return $this->prefession;
+        return $this->profession;
     }
 
-    public function setPrefession(?string $prefession): self
+    public function setProfession(?string $profession): self
     {
-        $this->prefession = $prefession;
+        $this->profession = $profession;
 
         return $this;
     }
@@ -530,5 +530,87 @@ class Personne
         }
 
         return $this;
+    }
+
+    public function getDeces(): ?Deces
+    {
+        return $this->deces;
+    }
+
+    public function setDeces(Deces $deces): self
+    {
+        // set the owning side of the relation if necessary
+        if ($deces->getPersonne() !== $this) {
+            $deces->setPersonne($this);
+        }
+
+        $this->deces = $deces;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Mariage[]
+     */
+    public function getEpouxmariages(): Collection
+    {
+        return $this->epouxmariages;
+    }
+
+    public function addEpouxmariage(Mariage $epouxmariage): self
+    {
+        if (!$this->epouxmariages->contains($epouxmariage)) {
+            $this->epouxmariages[] = $epouxmariage;
+            $epouxmariage->setPersonneEpoux($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEpouxmariage(Mariage $epouxmariage): self
+    {
+        if ($this->epouxmariages->removeElement($epouxmariage)) {
+            // set the owning side to null (unless already changed)
+            if ($epouxmariage->getPersonneEpoux() === $this) {
+                $epouxmariage->setPersonneEpoux(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Mariage[]
+     */
+    public function getEpousemariages(): Collection
+    {
+        return $this->epousemariages;
+    }
+
+    public function addEpousemariage(Mariage $epousemariage): self
+    {
+        if (!$this->epousemariages->contains($epousemariage)) {
+            $this->epousemariages[] = $epousemariage;
+            $epousemariage->setPersonneEpouse($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEpousemariage(Mariage $epousemariage): self
+    {
+        if ($this->epousemariages->removeElement($epousemariage)) {
+            // set the owning side to null (unless already changed)
+            if ($epousemariage->getPersonneEpouse() === $this) {
+                $epousemariage->setPersonneEpouse(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->nom . ' ' . $this->prenom;
     }
 }

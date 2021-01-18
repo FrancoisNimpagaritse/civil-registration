@@ -1,0 +1,158 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Civilia ~ Registre des mariages{% endblock %}
+
+{% block body %}
+
+ <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Registre des mariages</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Mariages</a></li>
+              <li class="breadcrumb-item active">Registre</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">            
+
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Liste des mariages enregistrés dans le registre d'Etat Civil</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>N°</th>
+                    <th>Date mariage</th>
+                    <th>Célébré en commune</th>
+                    <th>Province</th>
+                    <th>Noms Epoux</th>
+                    <th>Noms Epouse</th>
+                    <th>Colline de résidence Epoux</th>
+                    <th>Zone de résidence Epoux</th>
+                    <th>Commune de résidence Epoux</th>
+                    <th>Province de résidence Epoux</th>
+                    <th>Colline de résidence Epouse</th>
+                    <th>Zone de résidence Epouse</th>
+                    <th>Commune de résidence Epouse</th>
+                    <th>Province de résidence Epouse</th>
+                    <th>Profession Epoux</th>
+                    <th>Profession Epouse</th>
+                    <th>N° Acte</th>
+                    <th>N° Volume</th>
+                    <th>Noms père Epoux</th>
+                    <th>Noms mère Epoux</th>
+                    <th>Noms père Epouse</th>
+                    <th>Noms mère Epouse</th>
+                    <th>Noms témoin Epoux</th>
+                    <th>Noms témoin Epouse</th>
+                    <th>Adresse témoin Epoux</th>
+                    <th>Adresse témoin Epouse</th>
+                    <th>Profession témoin Epoux</th>
+                    <th>Profession témoin Epouse</th>
+                    <th>Action</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for mariage in mariages %}
+                  <tr>
+                    <td>{{mariage.id}}</td>
+                    <td>{{mariage.dateMariage | date("d/m/Y")}}</td>
+                    <td>{{mariage.communeMariage}}</td>
+                    <td>{{mariage.provinceMariage}}</td>
+                    <td>{{mariage.personneEpoux}}</td>
+                    <td>{{mariage.personneEpouse}}</td>
+                    <td>{{mariage.collineResidenceEpoux}}</td>
+                    <td>{{mariage.ZoneResidenceEpoux}}</td>
+                    <td>{{mariage.communeResidenceEpoux}}</td>
+                    <td>{{mariage.provinceResidenceEpoux}}</td>
+                    <td>{{mariage.collineResidenceEpouse}}</td>
+                    <td>{{mariage.zoneResidenceEpouse}}</td>
+                    <td>{{mariage.communeResidenceEpouse}}</td>
+                    <td>{{mariage.provinceResidenceEpouse}}</td>
+                    <td>{{mariage.occupationEpoux}}</td>
+                    <td>{{mariage.occupationEpouse}}</td>
+                    <td>{{mariage.numeroActeMariage}}</td>
+                    <td>{{mariage.numeroVolume}}</td>
+                    <td>{{mariage.nomCompletPereEpoux}}</td>
+                    <td>{{mariage.nomCompletMereEpoux}}</td>
+                    <td>{{mariage.nomCompletPereEpouse}}</td>
+                    <td>{{mariage.nomCompletMereEpouse}}</td>
+                    <td>{{mariage.nomCompletTemoinEpoux}}</td>
+                    <td>{{mariage.nomCompletTemoinEpouse}}</td>
+                    <td>{{mariage.adresseTemoinEpoux}}</td>
+                    <td>{{mariage.adresseTemoinEpouse}}</td>
+                    <td>{{mariage.professionTemoinEpoux}}</td>
+                    <td>{{mariage.professionTemoinEpouse}}</td>
+                    <td>
+                      <a href="#" class="btn btn-xs btn-primary mb-2"><i class="fas fa-pencil-alt"></i></a>
+                      <a href="#" class="btn btn-xs btn-danger mb-2"><i class="fas fa-trash-alt"></i></a>
+                    </td>
+                  </tr>                      
+                  {% endfor %}                 
+                  </tbody>
+                  <tfoot>
+                  <tr>
+                    <th>N°</th>
+                    <th>Date mariage</th>
+                    <th>Célébré en commune</th>
+                    <th>Province</th>
+                    <th>Noms Epoux</th>
+                    <th>Noms Epouse</th>
+                    <th>Colline de résidence Epoux</th>
+                    <th>Zone de résidence Epoux</th>
+                    <th>Commune de résidence Epoux</th>
+                    <th>Province de résidence Epoux</th>
+                    <th>Colline de résidence Epouse</th>
+                    <th>Zone de résidence Epouse</th>
+                    <th>Commune de résidence Epouse</th>
+                    <th>Province de résidence Epouse</th>
+                    <th>Profession Epoux</th>
+                    <th>Profession Epouse</th>
+                    <th>N° Acte</th>
+                    <th>N° Volume</th>
+                    <th>Noms père Epoux</th>
+                    <th>Noms mère Epoux</th>
+                    <th>Noms père Epouse</th>
+                    <th>Noms mère Epouse</th>
+                    <th>Noms témoin Epoux</th>
+                    <th>Noms témoin Epouse</th>
+                    <th>Adresse témoin Epoux</th>
+                    <th>Adresse témoin Epouse</th>
+                    <th>Profession témoin Epoux</th>
+                    <th>Profession témoin Epouse</th>
+                    <th>Action</th>
+                  </tr>
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+{% endblock %}
