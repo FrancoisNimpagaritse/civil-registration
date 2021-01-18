@@ -30,11 +30,6 @@ class Personne
     private $prenom;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $naissanceDate;
-
-    /**
      * @ORM\Column(type="date", nullable=true)
      */
     private $dateNaissance;
@@ -107,7 +102,7 @@ class Personne
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $prefession;
+    private $profession;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -201,19 +196,7 @@ class Personne
 
         return $this;
     }
-
-    public function getNaissanceDate(): ?string
-    {
-        return $this->naissanceDate;
-    }
-
-    public function setNaissanceDate(string $naissanceDate): self
-    {
-        $this->naissanceDate = $naissanceDate;
-
-        return $this;
-    }
-
+    
     public function getDateNaissance(): ?\DateTimeInterface
     {
         return $this->dateNaissance;
@@ -382,14 +365,14 @@ class Personne
         return $this;
     }
 
-    public function getPrefession(): ?string
+    public function getProfession(): ?string
     {
-        return $this->prefession;
+        return $this->profession;
     }
 
-    public function setPrefession(?string $prefession): self
+    public function setProfession(?string $profession): self
     {
-        $this->prefession = $prefession;
+        $this->profession = $profession;
 
         return $this;
     }
@@ -624,5 +607,10 @@ class Personne
         }
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->nom . ' ' . $this->prenom;
     }
 }

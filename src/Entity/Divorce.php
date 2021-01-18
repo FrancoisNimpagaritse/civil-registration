@@ -53,6 +53,11 @@ class Divorce
      */
     private $mariage;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $referenceDecisionDivorce;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -138,6 +143,18 @@ class Divorce
     public function setMariage(Mariage $mariage): self
     {
         $this->mariage = $mariage;
+
+        return $this;
+    }
+
+    public function getReferenceDecisionDivorce(): ?string
+    {
+        return $this->referenceDecisionDivorce;
+    }
+
+    public function setReferenceDecisionDivorce(?string $referenceDecisionDivorce): self
+    {
+        $this->referenceDecisionDivorce = $referenceDecisionDivorce;
 
         return $this;
     }

@@ -95,11 +95,6 @@ class Mariage
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $nomCompletPere;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
     private $nomCompletPereEpoux;
 
     /**
@@ -354,18 +349,6 @@ class Mariage
         return $this;
     }
 
-    public function getNomCompletPere(): ?string
-    {
-        return $this->nomCompletPere;
-    }
-
-    public function setNomCompletPere(string $nomCompletPere): self
-    {
-        $this->nomCompletPere = $nomCompletPere;
-
-        return $this;
-    }
-
     public function getNomCompletPereEpoux(): ?string
     {
         return $this->nomCompletPereEpoux;
@@ -537,5 +520,10 @@ class Mariage
         $this->divorce = $divorce;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->personneEpoux . ' ~ ' . $this->personneEpouse;
     }
 }
