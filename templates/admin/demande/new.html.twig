@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Civilia ~ Délivrer un document{% endblock %}
+{% block title %}NindeSoft ~ Demande de document{% endblock %}
 
 {% block body %}
 
@@ -11,7 +11,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Fiche pour traiter une délivrance de document</h1>
+            <h1>Demande de document d'Etat Civil</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -31,45 +31,60 @@
 
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Fiche pour délivrer un document d'Etat Civil à délivrer</h3>
+                <h3 class="card-title">Fiche de demande de document d'Etat Civil</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-              <form action="" method="post">
-        <div class="card">
-            <h3 class="card-header bg-primary text-white">Dépense N° : {{numExp}}</h3>
-            <div class="card-body"> 
-                <!-- ENTETE FACTURE -->
-                <div class="row">        
-                    <div class="col-md-4">                        
-
-                      {{form_start(form)}}
-                      {{form_widget(form)}}
-                      {{form_end(form)}}
-
-                      <a href="{{ path('expense_index') }}">Retour liste</a>
+          <form action="" method="post">
+            <div class="card">
+                <div class="card-body"> 
+                  <!-- ENTETE FACTURE -->
+                  {{form_start(form)}}
+                  <div class="row">        
+                    <div class="col-md-2 bg-light">
+                      {{form_row(form.dateDemande)}}
                     </div>
-                    <div class="col-md-8"></div>
+                    <div class="col-md-3 bg-light"> 
+                      {{form_row(form.lieuDemande)}}
+                    </div>
+                    <div class="col-md-2 bg-light">
+                      {{form_row(form.statusDemande)}}
+                    </div>
+                  </div>
+                  <div class="row">
+                  <div class="col-md-2 bg-light">
+                      {{form_row(form.numeroRecuPaiement)}}
+                    </div>                    
+                    <div class="col-md-5 bg-light">
+                      {{form_row(form.personne)}}
+                    </div>
+                  </div>
+                  {{form_end(form)}}
+                    <a href="{{ path('admin_demandes_index') }}">Retour liste</a>
+                
+                  <div class="col-md-8"></div>
                 </div>
                 <!-- FIN ENTETE FACTURE -->
                 <!-- LIGNE DE RECHERCHE PRODUIT -->            
                 <table class="table">
                     <thead class="thead-light">
                     <tr>
-                        <th scope="col">Désignation du produit</th>
+                        <th scope="col">Désignation du document</th>
+                        <th scope="col">N° Acte</th>
+                        <th scope="col">N° Volume</th>
                         <th scope="col">Quantité</th>
-                        <th scope="col">Prix unitaire</th>
-                        <th scope="col">TVA</th>
+                        <th scope="col">Frais/unité</th>
                         <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
-                        <td>{{form_widget(formDetail.product)}}</td>        
-                        <td>{{form_widget(formDetail.quantity)}}</td>
-                        <td>{{form_widget(formDetail.unitPrice)}}</td>
-                        <td>{{form_widget(formDetail.tva)}}</td>                
-                        <td><input type="submit" value="Ajouter" name="bt" class="btn btn-warning text-white"></td>
+                        <td>{{form_widget(formDetail.document)}}</td> 
+                        <td>{{form_widget(formDetail.numeroActe)}}</td>
+                        <td>{{form_widget(formDetail.numeroVolume)}}</td>       
+                        <td>{{form_widget(formDetail.quantite)}}</td>
+                        <td>{{form_widget(formDetail.fraisUnitaire)}}</td>          
+                        <td><input type="submit" value="Ajouter" name="bt" class="btn btn-primary text-white"></td>
                     </tr>
                     
                     </tbody>
@@ -79,30 +94,29 @@
                 <table class="table table-bordered table-hover">
                     <thead class="thead-dark">
                     <tr>
-                        <th scope="col">Désignation</th>
+                        <th scope="col">Désignation du document</th>
+                        <th scope="col">N° Acte</th>
+                        <th scope="col">N° Volume</th>
                         <th scope="col">Quantité</th>
-                        <th scope="col">Prix unitaire</th>
-                        <th scope="col">Montant HT</th>
-                        <th scope="col">TVA</th>
-                        <th>Actions</th>
+                        <th scope="col">Frais/unité</th>
+                        <th scope="col">Montant</th>
+                        <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
-                    {% for lineExp in linesExp %}
+                    {% for lineDemande in lineDemandes %}
                     <tr>
-                        <td class="col-md-1">{{lineExp.product.designation}}</td>
-                        <td class="col-md-1">{{lineExp.quantity}}</td>       
-                        <td class="col-md-1">{{lineExp.unitPrice | number_format(2)}}</td>
-                        <td class="col-md-1">{{(lineExp.quantity * lineExp.unitprice) | number_format(2)}}</td>
-                        <td class="col-md-1">{{(lineExp.quantity * lineExp.unitprice * lineExp.Tva / 100 ) | number_format(2)}}</td>
+                        <td class="col-md-1">{{lineDemande.document.type}}</td>
+                        <td class="col-md-1">{{lineDemande.numeroActe}}</td>
+                        <td class="col-md-1">{{lineDemande.numeroVolume}}</td>
+                        <td class="col-md-1">{{lineDemande.quantite}}</td>       
+                        <td class="col-md-1">{{lineDemande.fraisUnitaire | number_format(2)}}</td>
+                        <td class="col-md-1">{{(lineDemande.quantite * lineDemande.fraisUnitaire) | number_format(2)}}</td>
                         <td>
                             <input type="submit" value="Supprimer" name="bt" class="btn btn-danger text-white">
                         </td>
                     </tr>
-                    {% set totalHt = totalHt + (lineExp.quantity * lineExp.unitPrice) %}
-                    {% set totalTva = totalTva + ((lineExp.quantity * lineExp.unitPrice) * lineExp.tva * 0.01) %}
-                    {% set totalTtc = totalTtc + (((lineExp.quantity * lineExp.unitPrice) * (100+ lineExp.tva )) * 0.01) %}
-                    
+                    {% set total = total + (lineDemande.quantite * lineDemande.fraisUnitaire) %}                    
                     {% endfor %}       
                     </tbody>            
                 </table>
@@ -112,18 +126,16 @@
                 <!-- RECAPITUALTIF -->
                 <tfooter>
                     <table class="table table-condensed">
-                        <tr class="col">
-                        <td><strong>Total HT: </strong></td><td><strong>{{totalHt | number_format(2)}}</strong></td>
-                        <td><strong>Total TVA: </strong></td><td><strong>{{totalTva | number_format(2)}}</strong></td>
-                        <td><strong>Total TTC: </strong></td><td><strong>{{totalTtc | number_format(2)}}</strong></td>
+                        <tr class="col-3">
+                        <td><strong>Total: </strong></td><td><strong>{{total | number_format(2)}}</strong></td>
                         </tr>
                     </table>
                 <tfooter>
                 <!-- END RECAPITULATIF -->
                 <div class="mt-3">
-                    <input type="submit" value="Valider" name="bt" class="btn btn-success btn-block">
+                    <input type="submit" value="Valider" name="bt" class="btn btn-success">
                 </div>
-                </div>
+              </div>
             
         </div>
      </form>     

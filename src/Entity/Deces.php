@@ -73,6 +73,11 @@ class Deces
      */
     private $personne;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $status;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -206,6 +211,18 @@ class Deces
     public function setPersonne(Personne $personne): self
     {
         $this->personne = $personne;
+
+        return $this;
+    }
+
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(?string $status): self
+    {
+        $this->status = $status;
 
         return $this;
     }

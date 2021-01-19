@@ -47,7 +47,7 @@ class AdminPersonneController extends AbstractController
 
             $this->addFlash(
                 'success',
-                "La personne <strong> {$personne->getNom()}</strong> a bien été enregistré !"
+                "La personne du nom de <strong> {$personne->getNom()} {$personne->getPrenom()}</strong> a bien été enregistré !"
             );
 
             return $this->redirectToRoute('admin_personnes_index');
@@ -76,7 +76,7 @@ class AdminPersonneController extends AbstractController
 
             $this->addFlash(
                 'success',
-                "Les données de la personne <strong> {$personne->getNom()}</strong> ont bien été modifiées !"
+                "Les données de <strong> {$personne->getNom()} {$personne->getPrenom()}</strong> ont bien été modifiées !"
             );
 
             return $this->redirectToRoute('admin_personnes_index');

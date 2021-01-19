@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NindeSoft | Impression</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+</head>
+<body>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    
+    <section class="content">
+      <div class="container-fluid">
+
+            <!-- Main content -->
+            <div class="invoice p-3 mb-3">
+            
+            <div class="row">
+                <div class="col-10">
+                    <h4>
+                        
+                    </h4>
+                </div>
+            </div>
+            <!-- info row -->
+            <div class="row invoice-info">
+                <div class="col-sm-5 invoice-col">
+                    REPUBLIQUE DU BURUNDI<br>
+                    MINISTERE DE L'INTERIEUR ET DE LA SECURITE PUBLIQUE
+                    <address>
+                    PROVINCE {{naissance.provinceNaissance}}<br>                    
+                    COMMUNE {{naissance.communeNaissance}}<br>
+                    Téléphone: (+257) 123-5432
+                    <hr>
+                    </address>
+                </div>
+            <!-- /.col -->                
+            </div>
+              <!-- /.row -->
+              
+              <!-- info row -->
+            <div class="row invoice-info">
+            <div class="col-sm-10 invoice-col ">
+                <p>Je soussigné, ...........................
+                Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem plugg dopplr jibjab, 
+                movity jajah plickers sifteo edmodo ifttt zimbra.
+                </p>
+                <p>La présente attestation est établie en présence des témoins <strong>{{naissance.nomCompletTemoinUn}}</strong> résidant
+                à <strong>{{naissance.adresseTemoinUn}}</strong>, <strong>{{naissance.professionTemoinUn}}</strong> et <strong>{{naissance.nomCompletTemoinUn}}</strong> résidant
+                à <strong>{{naissance.adresseTemoinUn}}</strong>, <strong>{{naissance.professionTemoinUn}}</strong>.
+
+                Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem plugg dopplr jibjab, 
+                movity jajah plickers sifteo edmodo ifttt zimbra.
+                </p>            
+            </div>
+              <!-- /.row -->
+              <!-- Table row -->
+              <div class="row">
+                <div class="col-12 table-responsive">                  
+                </div>
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
+
+              <div class="row">
+                <!-- accepted payments column -->
+                <div class="col-6">
+                  <p class="lead"></p>
+                  
+
+                  <p class="text-muted well well-sm shadow-none" style="margin-top: 10px;">
+                   
+                  </p>
+                </div>
+                <!-- /.col -->
+                <div class="col-6">
+                  <p class="lead"><strong>Fait à {{naissance.communeNaissance}}</strong></p>
+                  
+                </div>
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->              
+            </div>
+            <!-- /.invoice -->
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+
+<!-- ./wrapper -->
+<!-- Page specific script -->
+<script>
+  window.addEventListener("load", window.print());
+</script>
+</body>
+</html>

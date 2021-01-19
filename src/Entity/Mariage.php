@@ -164,6 +164,11 @@ class Mariage
      */
     private $divorce;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $status;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -525,5 +530,17 @@ class Mariage
     public function __toString()
     {
         return $this->personneEpoux . ' ~ ' . $this->personneEpouse;
+    }
+
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(?string $status): self
+    {
+        $this->status = $status;
+
+        return $this;
     }
 }

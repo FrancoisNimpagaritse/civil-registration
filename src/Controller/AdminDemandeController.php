@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Demande;
+use App\Form\DemandeType;
 use App\Entity\DetailDemande;
+use App\Form\DetailDemandeType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,14 +25,14 @@ class AdminDemandeController extends AbstractController
     }
 
     /** Permet d'enregistrer une demande de document et ses détails
-     * @Route("/admin/demande/new", name="admin_demande_create")
+     * @Route("/admin/demandes/new", name="admin_demandes_create")
      */
     public function create(Request $request, EntityManagerInterface $manager): Response
     {
         $demande = new Demande();        
         $detailDemande = new DetailDemande();
 
-        $form = $this->createForm(DemandeType::class, $detailDemande);
+        $form = $this->createForm(DemandeType::class, $demande);
         $form->handleRequest($request);
 
         $formDetail = $this->createForm(DetailDemandeType::class, $detailDemande);
@@ -44,7 +46,7 @@ class AdminDemandeController extends AbstractController
         if(!$session->has('demande')){
             $session->set('demande', []);
         }
-
+        
         $TabDemande = $session->get('demande', []);
         
         if ($form->isSubmitted() || $formDetail->isSubmitted()) {
@@ -52,7 +54,7 @@ class AdminDemandeController extends AbstractController
             
             if($choice == "Valider") {
                 $entityManager = $this->getDoctrine()->getManager();
-                $lig = sizeof($TabDemande);
+                $ligne = sizeof($TabDemande);
 
                $demande->setFraisTotalDemande($total);
 
@@ -63,19 +65,21 @@ class AdminDemandeController extends AbstractController
                 /* Fin enregistrement demande */
                 
                 /* Valider détails de la demande */
-                for ($i = 1; $i <= $lig; $i++) {                    
-                    $lineExpense = new DetailDemande();
+                for ($i = 1; $i <= $ligne; $i++) {                    
+                    $lineDemande = new DetailDemande();
 
-                    $lineExpense->setDemande($demande)
+                    $lineDemande->setDemande($demande)
                                 ->setDocument($TabDemande[$i]->getDocument())
+                                ->setNumeroActe($TabDemande[$i]->getNumeroActe())
+                                ->setNumeroVolume($TabDemande[$i]->getNumeroVolume())
                                 ->setFraisUnitaire($TabDemande[$i]->getFraisUnitaire())                                
                                 ->setQuantite($TabDemande[$i]->getQuantite())
                                 ->setLigne($i);
 
-                    $entityManager->merge($lineExpense);
+                    $entityManager->merge($lineDemande);
                     $entityManager->flush();                                
                     
-                    $montant = $TabDemande[$i]->getUnitPrice() * $TabDemande[$i]->getQuantity();
+                    $montant = $TabDemande[$i]->getFraisUnitaire() * $TabDemande[$i]->getQuantite();
                     $total = $total + $montant;
                 }
 
@@ -85,11 +89,11 @@ class AdminDemandeController extends AbstractController
                 $entityManager->persist($demande);
                 $entityManager->flush();
 
-                $session->remove('expense');
+                $session->remove('demande');
                 /* Fin enregistrement des détails de la dépense */
                 $this->addFlash('success', 'Demande ajoutée avec succcès');
 
-                return $this->redirectToRoute('admin_demande_create');
+                return $this->redirectToRoute('admin_demandes_create');
 
             } else if($choice == "Ajouter") {
                 $montant = $detailDemande->getFraisUnitaire() * $detailDemande->getQuantite();
@@ -101,15 +105,12 @@ class AdminDemandeController extends AbstractController
 
         return $this->render('admin/demande/new.html.twig', [
             'demande' => $demande,
-            'linesDemnd'    => $TabDemande,
+            'lineDemandes'    => $TabDemande,
             'form' => $form->createView(),
             'detailDemande' => $detailDemande,
             'formDetail' => $formDetail->createView(),
             'total'    => $total,
             'line'        => $ligne
-        ]);
-        return $this->render('admin/demande/new.html.twig', [
-            'controller_name' => 'AdminDemandeController',
-        ]);
+        ]);        
     }
 }

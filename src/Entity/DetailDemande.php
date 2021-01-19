@@ -44,6 +44,16 @@ class DetailDemande
      */
     private $ligne;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $numeroActe;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $numeroVolume;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -105,6 +115,30 @@ class DetailDemande
     public function setLigne(string $ligne): self
     {
         $this->ligne = $ligne;
+
+        return $this;
+    }
+
+    public function getNumeroActe(): ?string
+    {
+        return $this->numeroActe;
+    }
+
+    public function setNumeroActe(?string $numeroActe): self
+    {
+        $this->numeroActe = $numeroActe;
+
+        return $this;
+    }
+
+    public function getNumeroVolume(): ?string
+    {
+        return $this->numeroVolume;
+    }
+
+    public function setNumeroVolume(?string $numeroVolume): self
+    {
+        $this->numeroVolume = $numeroVolume;
 
         return $this;
     }

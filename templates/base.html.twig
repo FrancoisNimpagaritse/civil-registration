@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{% block title %}Civilia | Tableau de bord{% endblock %}</title>
+        <title>{% block title %}NindeSoft | Tableau de bord{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
 
         <!-- Google Font: Source Sans Pro -->
@@ -70,45 +70,17 @@
                 <ul class="navbar-nav ml-auto">
                     {% if app.user %}
                     <li class="nav-item">
-                    <a href="#" class="nav-link" style="color:blue;"> <strong>Bienvenue <?=$_SESSION['user_firstname'];?></strong></a>
+                    <a href="#" class="nav-link" style="color:blue;"> <strong>Bienvenue {{app.user.prenom}} {{app.user.nom}}</strong></a>
                     </li>
                     <li class="nav-item">
-                    <a href="#" class="nav-link text-danger"><i class="fas fa-user-times"></i> Logout</a>
+                    <a href="{{ path('account_logout') }}" class="nav-link text-danger"><i class="fas fa-user-times"></i> Logout</a>
                     </li>
                     {% else %}
-                    <li class="nav-item">
-                        <a href="#" class="nav-link text-primary"><i class="fas fa-user"></i> S'inscrire</a>
-                    </li>
+                    
                     <li class="nav-item">
                         <a href="#" class="nav-link text-success"><i class="fas fa-user"></i> Login</a>
-                    </li>            
-                    <!-- Notifications Dropdown Menu -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link" data-toggle="dropdown" href="#">
-                        <i class="far fa-bell"></i>
-                        <span class="badge badge-warning navbar-badge">15</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-item dropdown-header">15 Notifications</span>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-envelope mr-2"></i> 4 new messages
-                            <span class="float-right text-muted text-sm">3 mins</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-users mr-2"></i> 8 friend requests
-                            <span class="float-right text-muted text-sm">12 hours</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-file mr-2"></i> 3 new reports
-                            <span class="float-right text-muted text-sm">2 days</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-                        </div>
                     </li>
+                    
                     {% endif %}
                 </ul>
             </nav>
@@ -131,7 +103,7 @@
                 <!-- Brand Logo -->
                 <a href="index3.html" class="brand-link">
                 <img src="/admin_assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">Civilia</span>
+                <span class="brand-text font-weight-light">NindeSoft</span>
                 </a>
 
                 <!-- Sidebar -->
@@ -142,7 +114,7 @@
                     <img src="/admin_assets/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                    <a href="#" class="d-block">Francis Nimpagaritse</a>
+                    <a href="#" class="d-block">Fabrice Minani</a>
                     </div>
                 </div>                
 
@@ -152,7 +124,7 @@
                     <!-- Add icons to the links using the .nav-icon class
                         with font-awesome or any other icon font library -->
                     <li class="nav-item">
-                        <a href="pages/gallery.html" class="nav-link active">
+                        <a href="pages/gallery.html" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
@@ -194,20 +166,20 @@
                         <p>
                             Naissances
                             <i class="fas fa-angle-left right"></i>
-                            <span class="badge badge-info right">6</span>
+                            <span class="badge badge-info right"></span>
                         </p>
                         </a>
                         <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="pages/layout/top-nav.html" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Top Navigation</p>
+                            <p>Listes des naissances</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Top Navigation + Sidebar</p>
+                            <p>Nouvelle naissance</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -466,7 +438,7 @@
                         </li>
                         </ul>
                     </li>
-                    <li class="nav-header">ATTESTATIONS</li>
+                    <li class="nav-header">IMPRESSION ATTESTATIONS</li>
                     <li class="nav-item">
                         <a href="pages/calendar.html" class="nav-link">
                         <i class="nav-icon far fa-calendar-alt"></i>
@@ -861,7 +833,7 @@
             {% block javascripts %}{% endblock %}
 
             <footer class="main-footer">
-                <strong>Copyright &copy; 2020 <a href="#">Civilia</a>.</strong>
+                <strong>Copyright &copy; 2020 <a href="#">NindeSoft</a>.</strong>
                Tous droits réservés.
                 <div class="float-right d-none d-sm-inline-block">
                 <b>Version</b> 3.1.0-rc

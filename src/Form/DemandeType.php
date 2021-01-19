@@ -6,6 +6,7 @@ use App\Entity\Demande;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class DemandeType extends AbstractType
 {
@@ -17,7 +18,6 @@ class DemandeType extends AbstractType
                 'widget' =>'single_text'
             ])
             ->add('lieuDemande')
-            ->add('fraisTotalDemande')
             ->add('numeroRecuPaiement')
             ->add('statusDemande')
             ->add('personne')
