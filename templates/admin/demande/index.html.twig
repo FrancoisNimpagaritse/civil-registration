@@ -1,20 +1,108 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AdminDemandeController!{% endblock %}
+{% block title %}Andikwa ~ Demandes de documents{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+ <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Liste des demandes de documents</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Demandes documents</a></li>
+              <li class="breadcrumb-item active">Liste</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/_EtatCivil/etatcivil/src/Controller/AdminDemandeController.php'|file_link(0) }}">src/Controller/AdminDemandeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/_EtatCivil/etatcivil/templates/admin_demande/index.html.twig'|file_link(0) }}">templates/admin_demande/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">            
+
+            <div class="card">
+              
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>N°</th>
+                    <th>Date mariage</th>
+                    <th>Célébré en commune</th>
+                    <th>Province</th>
+                    <th>Noms Epoux</th>
+                    <th>Noms Epouse</th>
+                    <th>Date divorce</th>
+                    <th>Lieu divorce</th>
+                    <th>Profession Epoux</th>
+                    <th>Profession Epouse</th>
+                    <th>Référence décision divorce</th>
+                    <th>Nombre d'enfants issus du mariage</th>
+                    <th>Action</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for divorce in divorces %}
+                  <tr>
+                    <td>{{divorce.id}}</td>
+                    <td>{{divorce.mariage.dateMariage | date("d/m/Y")}}</td>
+                    <td>{{divorce.mariage.communeMariage}}</td>
+                    <td>{{divorce.mariage.provinceMariage}}</td>
+                    <td>{{divorce.mariage.personneEpoux}}</td>
+                    <td>{{divorce.mariage.personneEpouse}}</td>
+                    <td>{{divorce.datedivorce | date("d/m/Y")}}</td>
+                    <td>{{divorce.lieuDecisionDivorce}}</td>
+                    <td>{{divorce.professionEpoux}}</td>
+                    <td>{{divorce.professionEpouse}}</td>
+                    <td>{{divorce.referenceDecisionDivorce}}</td>
+                    <td>{{divorce.nombreEnfantsIssusMariage}}</td>
+                    <td>
+                      <a href="#" class="btn btn-xs btn-primary mb-2"><i class="fas fa-pencil-alt"></i></a>
+                      <a href="#" class="btn btn-xs btn-danger mb-2"><i class="fas fa-trash-alt"></i></a>
+                    </td>
+                  </tr> 
+                  {% endfor %}
+                  </tbody>
+                  <tfoot>
+                  <tr>
+                    <th>N°</th>
+                    <th>Date mariage</th>
+                    <th>Célébré en commune</th>
+                    <th>Province</th>
+                    <th>Noms Epoux</th>
+                    <th>Noms Epouse</th>
+                    <th>Date divorce</th>
+                    <th>Lieu divorce</th>
+                    <th>Profession Epoux</th>
+                    <th>Profession Epouse</th>
+                    <th>Référence décision divorce</th>
+                    <th>Nombre d'enfants issus du mariage</th>
+                    <th>Action</th>
+                  </tr>
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
 {% endblock %}

@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{% block title %}NindeSoft | Tableau de bord{% endblock %}</title>
+        <title>{% block title %}Andikwa | Tableau de bord{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
 
         <!-- Google Font: Source Sans Pro -->
@@ -101,22 +101,37 @@
             <!-- Main Sidebar Container -->
             <aside class="main-sidebar sidebar-dark-primary elevation-4">
                 <!-- Brand Logo -->
-                <a href="index3.html" class="brand-link">
-                <img src="/admin_assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">NindeSoft</span>
-                </a>
-
+                <div class="row">
+                    <div class="col-md-3">
+                    <a href="#" class="brand-link">
+                    <img src="/admin_assets/dist/img/GjtechLogo.jpg" alt="GjTech Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                    <span class="brand-text font-weight-light"></span>
+                    </a>
+                    </div>
+                    <div class="col-md-3">
+                    <a href="#" class="brand-link">
+                    <img src="/admin_assets/dist/img/drapeau-bdi.jpg" alt="Andikwa Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                    <span class="brand-text font-weight-light">Andikwa</span>
+                    </a>
+                    </div>
+                </div>
                 <!-- Sidebar -->
                 <div class="sidebar">
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    {% if app.user %}
                     <div class="image">
-                    <img src="/admin_assets/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                        <img src="/admin_assets/dist/img/avatar.png" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                    <a href="#" class="d-block">Fabrice Minani</a>
+                        <a href="#" class="nav-link" style="color:blue;"> {{app.user.prenom}} {{app.user.nom}}</a>
                     </div>
-                </div>                
+                    {% else %}
+                    <div class="info">
+                        <a href="#" class="d-block">Génie des technologies</a>
+                    </div>
+                    {% endif %}
+                </div>
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
@@ -833,10 +848,10 @@
             {% block javascripts %}{% endblock %}
 
             <footer class="main-footer">
-                <strong>Copyright &copy; 2020 <a href="#">NindeSoft</a>.</strong>
+                <strong>Copyright &copy; GjTech <a href="#">Andikwa</a>.</strong>
                Tous droits réservés.
                 <div class="float-right d-none d-sm-inline-block">
-                <b>Version</b> 3.1.0-rc
+                <b>Version</b> 1.1.0
                 </div>
             </footer>
 
