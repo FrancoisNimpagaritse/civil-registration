@@ -2,9 +2,11 @@
 
 namespace App\Form;
 
+use App\Entity\Document;
 use App\Entity\DetailDemande;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class DetailDemandeType extends AbstractType
@@ -16,6 +18,8 @@ class DetailDemandeType extends AbstractType
             'label' => 'Documment',
             'class' => Document::class
             ])
+        ->add('numeroActe')
+        ->add('numeroVolume')
         ->add('fraisUnitaire')
         ->add('quantite')
         ;

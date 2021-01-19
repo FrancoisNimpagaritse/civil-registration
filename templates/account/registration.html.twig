@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}NindeSoft ~ Ajouter un document{% endblock %}
+{% block title %}NindeSoft ~ Créer un utilisateur{% endblock %}
 
 {% block body %}
 
@@ -11,12 +11,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Fiche d'jout d'un document</h1>
+            <h1>Gestion des utilisateurs</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Documents</a></li>
-              <li class="breadcrumb-item active">nouveau</li>
+              <li class="breadcrumb-item"><a href="#">Utilisateurs</a></li>
+              <li class="breadcrumb-item active">Nouveau</li>
             </ol>
           </div>
         </div>
@@ -31,25 +31,34 @@
 
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Ajouter un document d'Etat Civil à délivrer</h3>
+                <h3 class="card-title">Créer un nouvel utilisateur</h3>
               </div>
               <!-- /.card-header -->
-              <div class="card-body">
-                {{form_start(form)}}
+              <div class="card-body">                
+                    {{form_start(form)}}
                 <div class=" row">
-                    <div class="col"> 
-                    {{form_row(form.type)}}
+                    <div class="col">
+                    {{form_row(form.nom)}}
                     </div>
                     <div class="col">
-                    {{form_row(form.fraisUnitaire)}}
+                    {{form_row(form.prenom)}}
                     </div>
                 </div>
                 <div class=" row">
                     <div class="col">
-                    {{form_row(form.description)}}
+                    {{form_row(form.email)}}
                     </div>
-                 </div>                
-                <button type="submit" class="btn btn-success">Valider l'ajout</button>
+                    <div class="col">
+                    {{form_row(form.hash)}}
+                    </div>
+                    <div class="col">
+                    {{form_row(form.commune)}}
+                    </div>
+                    <div class="col">
+                    {{form_row(form.province)}}
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success">Valider la création</button>
                 {{form_end(form)}}
               </div>
               <!-- /.card-body -->

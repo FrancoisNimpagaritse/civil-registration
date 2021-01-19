@@ -3,30 +3,34 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>easyCivilius | Connexion</title>
+  <title>NindeSoft | Connexion</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="/admin_assets/plugins/fontawesome-free/css/all.min.css">
   <!-- icheck bootstrap -->
-  <link rel="stylesheet" href="../../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <link rel="stylesheet" href="/admin_assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="/admin_assets/dist/css/adminlte.min.css">
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="../../index2.html"><b>easy</b>Civilius</a>
+    <a href="#"><b>Ninde</b>Soft</a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Coonectez-vous pour travailler avec le logiciel</p>
-
-      <form action="../../index3.html" method="post">
+      <p class="login-box-msg">Connectez-vous pour travailler avec le logiciel</p>
+      {% if hasError %}
+        <div class="alert alert-danger">
+            Une erreur est survenue, l'email ou le mot de passe entré est invalide !
+        </div>
+      {% endif %}
+      <form action="{{ path('account_login') }}" method="post">
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Identifiant">
+          <input type="email" name="_username" id="email" class="form-control" value="{{username}}" placeholder="Adresse email">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -34,7 +38,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Mot de passe">
+          <input type="password" name="_password" id="password" class="form-control" placeholder="Mot de passe">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -63,9 +67,6 @@
         <a href="#" class="btn btn-block btn-primary">
           <i class="fab fa-facebook mr-2"></i> Se connecter avec Facebook
         </a>
-        <a href="#" class="btn btn-block btn-danger">
-          <i class="fab fa-google-plus mr-2"></i> Se connecter avec Google+
-        </a>
       </div>
       <!-- /.social-auth-links -->
 
@@ -79,10 +80,10 @@
 <!-- /.login-box -->
 
 <!-- jQuery -->
-<script src="../../plugins/jquery/jquery.min.js"></script>
+<script src="/admin_assets/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/admin_assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
-<script src="../../dist/js/adminlte.min.js"></script>
+<script src="/admin_assets/dist/js/adminlte.min.js"></script>
 </body>
 </html>
