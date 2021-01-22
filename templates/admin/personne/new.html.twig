@@ -36,8 +36,80 @@
               <!-- /.card-header -->
               <div class="card-body">
                 {{form_start(form)}}
-                {{form_widget(form)}}
-                <button type="submit" class="btn btn-success">Valider l'inscription</button>
+                <div class="row">
+                  <div class="col">
+                  {{form_row(form.nom)}}
+                  </div>
+                  <div class="col">
+                  {{form_row(form.prenom)}}
+                  </div>
+                  <div class="col">
+                  {{form_row(form.dateNaissance)}}
+                  </div>
+                  <div class="col">
+                  {{form_row(form.paysNaissance)}}
+                  </div>
+                </div>
+                <hr class="bg-danger">
+                <div class="row">
+                  <div class="col">
+                  {{form_row(form.provinceNaissance)}}
+                  </div>
+                  <div class="col">
+                  {{form_row(form.communeNaissance)}}
+                  </div>
+                  <div class="col">
+                  {{form_row(form.zoneNaissance)}}
+                  </div>
+                  <div class="col">
+                  {{form_row(form.collineNaissance)}}
+                  </div>
+                  <div class="col">
+                  {{form_row(form.sexe)}}
+                  </div>
+                  <div class="col">
+                  {{form_row(form.statusVital)}}
+                  </div>
+                </div>
+                <hr class="bg-danger">
+                <div class="row">
+                  <div class="col">
+                  {{form_row(form.provinceResidence)}}
+                  </div>
+                  <div class="col">
+                  {{form_row(form.communeResidence)}}
+                  </div>
+                  <div class="col">
+                  {{form_row(form.zoneResidence)}}
+                  </div>
+                  <div class="col">
+                  {{form_row(form.collineResidence)}}
+                  </div>
+                  <div class="col">
+                  {{form_row(form.nationalite)}}
+                  </div>
+                  <div class="col">
+                  {{form_row(form.numeroCarteNationaleIdentite)}}
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                  {{form_row(form.profession)}}
+                  </div>
+                  <div class="col">
+                  {{form_row(form.photo)}}
+                  </div>
+                  <div class="col">
+                  {{form_row(form.pin)}}
+                  </div>
+                  <div class="col">
+                  {{form_row(form.pere)}}
+                  </div>
+                  <div class="col">
+                  {{form_row(form.mere)}}
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-info">Valider l'inscription</button>
                 {{form_end(form)}}
               </div>
               <!-- /.card-body -->

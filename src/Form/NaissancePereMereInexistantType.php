@@ -2,11 +2,14 @@
 
 namespace App\Form;
 
+use App\Entity\Commune;
+use App\Entity\Province;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class NaissancePereMereInexistantType extends AbstractType
 {
@@ -40,8 +43,14 @@ class NaissancePereMereInexistantType extends AbstractType
                 ])
             ->add('collineNaissance')
             ->add('zoneNaissance')
-            ->add('communeNaissance')
-            ->add('provinceNaissance')
+            ->add('communeNaissance', EntityType::class, [
+                'label' => 'Né en commune',
+                'class' => Commune::class
+                ])
+            ->add('provinceNaissance', EntityType::class, [
+                'label' => 'Né en province',
+                'class' => Province::class
+                ])
             ->add('paysNaissance')
             ->add('statusVital')
             ->add('sexe')
@@ -72,15 +81,27 @@ class NaissancePereMereInexistantType extends AbstractType
                 ])
             ->add('collineNaissancePere')
             ->add('zoneNaissancePere')
-            ->add('communeNaissancePere')
-            ->add('provinceNaissancePere')
+            ->add('communeNaissancePere', EntityType::class, [
+                'label' => 'Né en commune',
+                'class' => Commune::class
+                ])
+            ->add('provinceNaissancePere', EntityType::class, [
+                'label' => 'Né en province',
+                'class' => Province::class
+                ])
             ->add('paysNaissancePere')
             ->add('statusVitalPere')
             ->add('sexePere')
             ->add('collineResidencePere')
             ->add('zoneResidencePere')
-            ->add('communeResidencePere')
-            ->add('provinceResidencePere')
+            ->add('communeResidencePere', EntityType::class, [
+                'label' => 'Réside en commune',
+                'class' => Commune::class
+                ])
+            ->add('provinceResidencePere', EntityType::class, [
+                'label' => 'Réside en province',
+                'class' => Province::class
+                ])
             ->add('nationalitePere')
             ->add('professionPere')
             ->add('photoPere')
@@ -88,7 +109,7 @@ class NaissancePereMereInexistantType extends AbstractType
             ->add('nomMere')
             ->add('prenomMere')
             ->add('dateNaissanceMere', DateType::class, [
-                'label' =>  'Né le',
+                'label' =>  'Née le',
                 'widget' => 'single_text',
                 'attr'  => [
                     'placeholder' => 'Date de naissance de l\'enfant'
@@ -96,15 +117,27 @@ class NaissancePereMereInexistantType extends AbstractType
                 ])
             ->add('collineNaissanceMere')
             ->add('zoneNaissanceMere')
-            ->add('communeNaissanceMere')
-            ->add('provinceNaissanceMere')
+            ->add('communeNaissanceMere', EntityType::class, [
+                'label' => 'Née en commune',
+                'class' => Commune::class
+                ])
+            ->add('provinceNaissanceMere', EntityType::class, [
+                'label' => 'Née en province',
+                'class' => Province::class
+                ])
             ->add('paysNaissanceMere')
             ->add('statusVitalMere')
             ->add('sexeMere')
             ->add('collineResidenceMere')
             ->add('zoneResidenceMere')
-            ->add('communeResidenceMere')
-            ->add('provinceResidenceMere')
+            ->add('communeResidenceMere', EntityType::class, [
+                'label' => 'Réside en commune',
+                'class' => Commune::class
+                ])
+            ->add('provinceResidenceMere', EntityType::class, [
+                'label' => 'Réside en province',
+                'class' => Province::class
+                ])
             ->add('nationaliteMere')
             ->add('professionMere')
             ->add('photoMere')

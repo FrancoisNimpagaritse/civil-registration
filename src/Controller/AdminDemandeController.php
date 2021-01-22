@@ -6,11 +6,13 @@ use App\Entity\Demande;
 use App\Form\DemandeType;
 use App\Entity\DetailDemande;
 use App\Form\DetailDemandeType;
+use App\Repository\DocumentRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class AdminDemandeController extends AbstractController
 {
@@ -112,5 +114,48 @@ class AdminDemandeController extends AbstractController
             'total'    => $total,
             'line'        => $ligne
         ]);        
+    }
+
+    /**
+     * @Route("/admin/choose-documents", name="admin_choose-documents_index")
+     */
+    public function choose(DocumentRepository $repo): Response
+    {
+        return $this->render('admin/demande/choose-documents.html.twig', [
+            'docs' => $repo->findAll()
+        ]);
+    }
+
+    /**
+     * @Route("/admin/cart/add/{id}", name="admin_cart_add", requirements={"id": "\d+"})
+     */
+    public function add($id, DocumentRepository $repo, SessionInterface $session): Response
+    {
+        $doc = $repo->find($id);
+        //0. Sécurisation de la route: Est ce que le document demandé existe?
+        if(!$doc) {
+            throw $this->createNotFoundException("Le document demandé n'existe pas !");
+        }
+        /**
+         * Panier: [1=>2, 3=>1, ..] l'identifiant du document et la quantité demandée
+         */
+        
+        //1. Retrouver le panier dans la session
+        //2. S'il n'existe pas encore, alors prendre un panier/tableau vide
+        $cart = $session->get('cart', []);
+
+        //3. Voir si le document {$id} existe déjà dans le tableau
+        //4. Si c'est le cas, augemnter simplement la quantité
+        //5. Sinon ajouter le document {$id} avec la quantité 1
+        if(array_key_exists($id, $cart)) {
+            $cart[$id]++;
+        } else {
+            $cart[$id] = 1;
+        }
+        //6. Enregistrer le tableau dans la session
+        $session->set('cart', $cart);
+        $this->addFlash('success', "Document bien ajouté à la liste de demande");
+        //dd($request->getSession()->get('cart'));
+        return $this->redirectToRoute('admin_choose-documents_index');
     }
 }

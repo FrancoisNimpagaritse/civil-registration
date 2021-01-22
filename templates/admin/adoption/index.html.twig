@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Andikwa ~ Registre des décès{% endblock %}
+{% block title %}Andikwa ~ Registre des adoptions{% endblock %}
 
 {% block body %}
 
@@ -11,11 +11,11 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Registre des personnes décédées</h1>
+            <h1>Registre des adoptions</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Décès</a></li>
+              <li class="breadcrumb-item"><a href="#">Adoptions</a></li>
               <li class="breadcrumb-item active">Liste</li>
             </ol>
           </div>
@@ -40,32 +40,24 @@
                     <th>Nom</th>
                     <th>Prénom</th>
                     <th>Sexe</th>
-                    <th>Décédé(e) le</th>
-                    <th>Lieu décès</th>
-                    <th>Cause décès</th>
-                    <th>Demandeur d'enregistrement</th>
-                    <th>Adresse demandeur</th>
-                    <th>Téléphone demandeur</th>
-                    <th>N° acte décès</th>
-                    <th>N° Volume</th>
+                    <th>Adopté(e) le</th>
+                    <th>Père adoptif</th>
+                    <th>Mère adoptif</th>
+                    <th>Status</th>
                     <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
-                  {% for dece in deces %}
+                  {% for adoption in adoptions %}
                   <tr>
-                    <td>{{dece.id}}</td>
-                    <td>{{dece.personne.nom}}</td>
-                    <td>{{dece.personne.prenom}}</td>
-                    <td>{{dece.personne.sexe}}</td>
-                    <td>{{dece.dateDeces | date("d/m/Y")}}</td>
-                    <td>{{dece.lieuDeces}}</td>
-                    <td>{{dece.causeDeces}}</td>
-                    <td>{{dece.nomCompletDemandeur}}</td>
-                    <td>{{dece.adresseDemandeur}}</td>
-                    <td>{{dece.phoneDemandeur}}</td>
-                    <td>{{dece.numeroActeDeces}}</td>
-                    <td>{{dece.numeroVolume}}</td>
+                    <td>{{adoption.id}}</td>
+                    <td>{{adoption.enfantAdopte.nom}}</td>
+                    <td>{{adoption.enfantAdopte.prenom}}</td>
+                    <td>{{adoption.enfantAdopte.sexe}}</td>
+                    <td>{{adoption.dateAdoption | date("d/m/Y")}}</td>
+                    <td>{{adoption.pereAdoptif.nom}} {{adoption.pereAdoptif.prenom}}</td>
+                    <td>{{adoption.mereAdoptif.nom}} {{adoption.mereAdoptif.prenom}}</td>
+                    <td>{{adoption.status}}</td>
                     <td></td>
                   </tr>                      
                   {% endfor %}                 
@@ -76,14 +68,10 @@
                     <th>Nom</th>
                     <th>Prénom</th>
                     <th>Sexe</th>
-                    <th>Décédé(e) le</th>
-                    <th>Lieu décès</th>
-                    <th>Cause décès</th>
-                    <th>Demandeur d'enregistrement</th>
-                    <th>Adresse demandeur</th>
-                    <th>Téléphone demandeur</th>
-                    <th>N° acte décès</th>
-                    <th>N° Volume</th>
+                    <th>Adopté(e) le</th>
+                    <th>Père adoptif</th>
+                    <th>Mère adoptif</th>
+                    <th>Status</th>
                     <th>Action</th>
                   </tr>
                   </tfoot>

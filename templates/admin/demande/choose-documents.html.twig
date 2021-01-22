@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Andikwa ~ Demandes de documents{% endblock %}
+
+{% block body %}
+
+ <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Liste des demandes de documents</h1>
+          </div>
+          <div class="col-sm-2">
+            <a href="{{ path('admin_cart_show') }}" class="btn btn-info"><i class="fas fa-shopping-cart mr-1"></i>Voir Package</a>
+          </div>
+          <div class="col-sm-4">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Demandes documents</a></li>
+              <li class="breadcrumb-item active">Liste</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">            
+
+            <div class="card">              
+              <!-- /.card-header -->
+              <div class="card-body">                
+                  <div class="row">
+                    {% for doc in docs %}
+                    <div class="col-md-3">
+                        <div class="card mb-3 mt-3">
+                            <div class="card-header bg-secondary text-center">
+                                {{ doc.type }} <br>
+                                <strong>({{doc.fraisUnitaire}} FBU)</strong>                           
+                            </div>
+                            <div class="card-bordy">
+                            <img src="/admin_assets/dist/img/boxed-bg.jpg" width=100%; height=80px; alt="Image doc">
+                            </div> 
+                        
+                            <div class="text-center pt-2 pb-2">
+                                <a href="{{ path('admin_cart_add', {'id': doc.id}) }}" class="btn btn-secondary"><i class="fas fa-shopping-cart mr-1"></i>Choisir</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                  </div>
+                </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+{% endblock %}

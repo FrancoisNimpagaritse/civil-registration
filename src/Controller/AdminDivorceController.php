@@ -51,7 +51,6 @@ class AdminDivorceController extends AbstractController
             return $this->redirectToRoute('admin_divorces_index');
         }
 
-
         return $this->render('admin/divorce/new.html.twig', [
             'form' => $form->createView()
         ]);

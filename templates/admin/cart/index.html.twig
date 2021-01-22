@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Andikwa ~ Demande document{% endblock %}
+
+{% block body %}
+
+ <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Votre liste des docments demandés</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Demandes documents</a></li>
+              <li class="breadcrumb-item active">Liste</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">            
+
+            <div class="card">
+              
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>Document</th>
+                    <th>Frais/unité (FBU)</th>
+                    <th>Quantité</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for item in items %}
+                  <tr>
+                    <td>{{item.document.type}}</td>
+                    <td>{{item.document.fraisUnitaire}}</td>
+                    <td>{{item.qty}}</td>
+                    <td>{{item.document.fraisUnitaire * item.qty}}</td>
+                    
+                    <td>
+                      <a href="#" class="btn btn-xs btn-primary mb-2"><i class="fas fa-pencil-alt"></i></a>
+                      <a href="#" class="btn btn-xs btn-danger mb-2"><i class="fas fa-trash-alt"></i></a>
+                    </td>
+                  </tr> 
+                  {% endfor %}
+                  </tbody>
+                  <tfoot>
+                  <tr class="bg-info">
+                    <td col-span="4"><strong>Total:</strong> </td>
+                    <td></td>
+                    <td></td>
+                    <td><strong>{{total}}</strong></td>
+                    <td></td>
+                  </tr>
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+{% endblock %}
