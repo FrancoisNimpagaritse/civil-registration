@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Role;
 use App\Entity\User;
 use App\Form\RegistrationType;
 use App\Repository\UserRepository;
@@ -65,16 +66,19 @@ class AccountController extends AbstractController
     public function register(Request $request, EntityManagerInterface $manager)
     {
         $user = new User();
-
+        $userRole = new Role();
         $form = $this->createForm(RegistrationType::class, $user);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid())
         {
-            //$divorce->setDateEnregistrementDivorce(new \DateTime());
+            foreach($form->get('userRoles')->getData() as $user_role)
+            {
+                //Enregistrer les lignes dans la table association
+                $user->addRole($user_role);                
+            }
 
             $manager->persist($user);
-
             $manager->flush();
 
             $this->addFlash(

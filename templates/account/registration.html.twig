@@ -43,11 +43,11 @@
                     <div class="col">
                     {{form_row(form.prenom)}}
                     </div>
-                </div>
-                <div class=" row">
                     <div class="col">
                     {{form_row(form.email)}}
-                    </div>
+                    </div>                    
+                </div>
+                <div class=" row">
                     <div class="col">
                     {{form_row(form.hash)}}
                     </div>
@@ -56,6 +56,9 @@
                     </div>
                     <div class="col">
                     {{form_row(form.province)}}
+                    </div>
+                    <div class="col">
+                    {{form_row(form.userRoles)}}
                     </div>
                 </div>
                 <button type="submit" class="btn btn-success">Valider la création</button>
