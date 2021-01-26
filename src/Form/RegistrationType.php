@@ -50,7 +50,7 @@ class RegistrationType extends AbstractType
                 'label' => 'Province',
                 'class' => Province::class
                 ])
-            //->add('userRoles')
+            ->add('userRoles')
         ;
     }
 

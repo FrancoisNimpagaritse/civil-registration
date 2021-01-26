@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Role;
 use App\Entity\User;
 use App\Form\RegistrationType;
 use App\Repository\UserRepository;
@@ -9,7 +10,8 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class AccountController extends AbstractController
@@ -62,24 +64,30 @@ class AccountController extends AbstractController
      *
      * @return Response
      */
-    public function register(Request $request, EntityManagerInterface $manager)
+    public function register(Request $request, EntityManagerInterface $manager, UserPasswordEncoderInterface $encoder)
     {
         $user = new User();
-
+        $userRole = new Role();
         $form = $this->createForm(RegistrationType::class, $user);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid())
         {
-            //$divorce->setDateEnregistrementDivorce(new \DateTime());
+            $hash = $encoder->encodePassword($user, $user->getHash());
+            $user->setHash($hash);
+
+            foreach($form->get('userRoles')->getData() as $user_role)
+            {
+                //Enregistrer les lignes dans la table association
+                $user->addRole($user_role);                
+            }
 
             $manager->persist($user);
-
             $manager->flush();
 
             $this->addFlash(
                 'success',
-                "L'utilisateur <strong> {$user->getNom()} et {$user->getPrenom()}</strong> a bien été enregistré !"
+                "L'utilisateur <strong> {$user->getNom()} {$user->getPrenom()}</strong> a bien été enregistré !"
             );
 
             return $this->redirectToRoute('accounts_index');

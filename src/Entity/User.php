@@ -56,6 +56,13 @@ class User implements UserInterface
      */
     private $userRoles;
 
+    //Fonction ajoutée pour insérer des lignes dans la table d'association de many to many
+    public function addRole(Role $role)
+    {
+        $role->addUser($this); // synchronously updating inverse side
+        $this->roles[] = $role;
+    }
+
     public function __construct()
     {
         $this->userRoles = new ArrayCollection();

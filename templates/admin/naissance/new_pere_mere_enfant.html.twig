@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}NindeSoft ~ Enregistrer une naissance{% endblock %}
+{% block title %}Andikwa ~ Enregistrer une naissance{% endblock %}
 
 {% block body %}
 
@@ -30,7 +30,9 @@
           <div class="col-12">            
 
             <div class="card">
-              
+              <div class="card-header bg-secondary">
+                <h3 class="card-title text-white">Inscrire un enfant dont les parents ne sont pas encore inscrits</h3>
+              </div>
               <!-- /.card-header -->
               <div class="card-body">
                 {{form_start(form)}}
@@ -41,91 +43,198 @@
                     <div class="col">
                     {{form_row(form.prenomEnfant)}}
                     </div>
-                </div>
-                <div class=" row">
-                    <div class="col">
+                    <div class="col-2">
                     {{form_row(form.dateNaissance)}}
                     </div>
-                    <div class="col">
-                    {{form_row(form.lieuNaissance)}}
-                    </div>
-                    <div class="col">
+                    <div class="col-2">
                     {{form_row(form.dateInscription)}}
                     </div>
                 </div>
                 <div class=" row">
                     <div class="col">
-                    {{form_row(form.collineNaissance)}}
+                    {{form_row(form.lieuNaissance)}}
                     </div>
                     <div class="col">
-                    {{form_row(form.zoneNaissance)}}
+                    {{form_row(form.provinceNaissance)}}
                     </div>
                     <div class="col">
                     {{form_row(form.communeNaissance)}}
                     </div>
                     <div class="col">
-                    {{form_row(form.provinceNaissance)}}
+                    {{form_row(form.zoneNaissance)}}
+                    </div>
+                    <div class="col">
+                    {{form_row(form.collineNaissance)}}
                     </div>
                     <div class="col">
                     {{form_row(form.paysNaissance)}}
                     </div>
                 </div>  
                 <div class=" row">
-                  <div class="col">
+                  <div class="col mr-3">
                   {{form_row(form.statusVital)}}
                    </div>
-                   <div class="col"> 
+                   <div class="col-1"> 
                   {{form_row(form.sexe)}}
-                   </div>  
-                </div>  
-                {{form_row(form.numeroActeNaissance)}}
-                {{form_row(form.numeroVolume)}}
-                {{form_row(form.nomCompletTemoinUn)}}
-                {{form_row(form.adresseTemoinUn)}}
-                {{form_row(form.professionTemoinUn)}}
-                {{form_row(form.nomCompletTemoinDeux)}}
-                {{form_row(form.adresseTemoinDeux)}}
-                {{form_row(form.professionTemoinDeux)}}
+                   </div>
+                   <div class="col">
+                  {{form_row(form.numeroActeNaissance)}}
+                   </div>
+                   <div class="col"> 
+                  {{form_row(form.numeroVolume)}}
+                   </div>   
+                </div>
+                <!-- Pere -->
+                <hr class="bg-danger">
+                <div class=" row">
+                  <div class="col">
+                  {{form_row(form.nomPere)}}                
+                  </div>
+                  <div class="col"> 
+                  {{form_row(form.prenomPere)}}
+                  </div>
+                  <div class="col"> 
+                  {{form_row(form.dateNaissancePere)}}                
+                  </div>
+                  <div class="col"> 
+                  {{form_row(form.provinceNaissancePere)}}
+                  </div>
+                  <div class="col"> 
+                  {{form_row(form.communeNaissancePere)}}
+                  </div>
+                  <div class="col"> 
+                  {{form_row(form.zoneNaissancePere)}}
+                  </div>
+                </div>
+                <div class=" row">
+                  <div class="col"> 
+                  {{form_row(form.collineNaissancePere)}}
+                  </div>
+                  <div class="col"> 
+                  {{form_row(form.paysNaissancePere)}}
+                  </div>
+                  <div class="col"> 
+                  {{form_row(form.statusVitalPere)}}
+                  </div>
+                  <div class="col"> 
+                  {{form_row(form.sexePere)}}
+                  </div>
+                  <div class="col"> 
+                  {{form_row(form.provinceResidencePere)}}
+                  </div>
+                  <div class="col"> 
+                  {{form_row(form.communeResidencePere)}}
+                  </div>
+                </div>
+                <div class=" row">
+                  <div class="col"> 
+                  {{form_row(form.zoneResidencePere)}}
+                  </div>
+                  <div class="col"> 
+                  {{form_row(form.collineResidencePere)}}
+                  </div>
+                  <div class="col"> 
+                  {{form_row(form.nationalitePere)}}
+                  </div>
+                  <div class="col"> 
+                  {{form_row(form.professionPere)}}
+                  </div>
+                  <div class="col"> 
+                  {{form_row(form.photoPere)}}
+                  </div>
+                  <div class="col"> 
+                  {{form_row(form.pinPere)}} 
+                  </div>
+                </div>
+                <!-- Mere -->
+                <hr class="bg-danger">
+                <div class=" row">
+                  <div class="col">
+                  {{form_row(form.nomMere)}}                
+                  </div>
+                  <div class="col"> 
+                  {{form_row(form.prenomMere)}}
+                  </div>
+                  <div class="col"> 
+                  {{form_row(form.dateNaissanceMere)}}                
+                  </div>
+                  <div class="col"> 
+                  {{form_row(form.provinceNaissanceMere)}}
+                  </div>
+                  <div class="col"> 
+                  {{form_row(form.communeNaissanceMere)}}
+                  </div>
+                  <div class="col"> 
+                  {{form_row(form.zoneNaissanceMere)}}
+                  </div>
+                </div>
+                <div class=" row">
+                  <div class="col"> 
+                  {{form_row(form.collineNaissanceMere)}}
+                  </div>
+                  <div class="col"> 
+                  {{form_row(form.paysNaissanceMere)}}
+                  </div>
+                  <div class="col"> 
+                  {{form_row(form.statusVitalMere)}}
+                  </div>
+                  <div class="col"> 
+                  {{form_row(form.sexeMere)}}
+                  </div>
+                  <div class="col"> 
+                  {{form_row(form.provinceResidenceMere)}}
+                  </div>
+                  <div class="col"> 
+                  {{form_row(form.communeResidenceMere)}}
+                  </div>
+                </div>
+                <div class=" row">
+                  <div class="col"> 
+                  {{form_row(form.zoneResidenceMere)}}
+                  </div>
+                  <div class="col"> 
+                  {{form_row(form.collineResidenceMere)}}
+                  </div>
+                  <div class="col"> 
+                  {{form_row(form.nationaliteMere)}}
+                  </div>
+                  <div class="col"> 
+                  {{form_row(form.professionMere)}}
+                  </div>
+                  <div class="col"> 
+                  {{form_row(form.photoMere)}}
+                  </div>
+                  <div class="col"> 
+                  {{form_row(form.pinMere)}} 
+                  </div>
+                </div>
+                
+                <!-- Temoins -->
+                <hr class="bg-danger">
+                <div class=" row">
+                  <div class="col"> 
+                    {{form_row(form.nomCompletTemoinUn)}} 
+                  </div>
+                  <div class="col"> 
+                    {{form_row(form.adresseTemoinUn)}} 
+                  </div>
+                  <div class="col"> 
+                    {{form_row(form.professionTemoinUn)}}
+                  </div>
+                </div>
+                <div class=" row">
+                  <div class="col"> 
+                    {{form_row(form.nomCompletTemoinDeux)}}
+                  </div>
+                  <div class="col"> 
+                    {{form_row(form.adresseTemoinDeux)}} 
+                  </div>
+                  <div class="col"> 
+                    {{form_row(form.professionTemoinDeux)}} 
+                  </div>
+                </div>
 
-                {{form_row(form.nomPere)}}
-                {{form_row(form.prenomPere)}}
-                {{form_row(form.dateNaissancePere)}}
-                {{form_row(form.collineNaissancePere)}}
-                {{form_row(form.zoneNaissancePere)}}
-                {{form_row(form.communeNaissancePere)}}
-                {{form_row(form.provinceNaissancePere)}}
-                {{form_row(form.paysNaissancePere)}}
-                {{form_row(form.statusVitalPere)}}
-                {{form_row(form.sexePere)}}
-                {{form_row(form.collineResidencePere)}}
-                {{form_row(form.zoneResidencePere)}}
-                {{form_row(form.communeResidencePere)}}
-                {{form_row(form.provinceResidencePere)}}
-                {{form_row(form.nationalitePere)}}
-                {{form_row(form.professionPere)}}            
-                {{form_row(form.photoPere)}}
-                {{form_row(form.pinPere)}}
-
-                {{form_row(form.nomMere)}}
-                {{form_row(form.prenomMere)}}
-                {{form_row(form.dateNaissanceMere)}}
-                {{form_row(form.collineNaissanceMere)}}
-                {{form_row(form.zoneNaissanceMere)}}
-                {{form_row(form.communeNaissanceMere)}}
-                {{form_row(form.provinceNaissanceMere)}}
-                {{form_row(form.paysNaissanceMere)}}
-                {{form_row(form.statusVitalMere)}}
-                {{form_row(form.sexeMere)}}
-                {{form_row(form.collineResidenceMere)}}
-                {{form_row(form.zoneResidenceMere)}}
-                {{form_row(form.communeResidenceMere)}}
-                {{form_row(form.provinceResidenceMere)}}
-                {{form_row(form.nationaliteMere)}}
-                {{form_row(form.professionMere)}}
-                {{form_row(form.photoMere)}}
-                {{form_row(form.pinMere)}}
-
-                <button type="submit" class="btn btn-success">Valider l'inscription</button>
+                <button type="submit" class="btn btn-info">Valider l'inscription</button>
                 {{form_end(form)}}
               </div>
               <!-- /.card-body -->

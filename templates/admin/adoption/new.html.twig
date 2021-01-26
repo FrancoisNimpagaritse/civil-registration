@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Andikwa ~ Enregistrer une adoption{% endblock %}
+
+{% block body %}
+
+ <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Registre des adoptions</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Adoption</a></li>
+              <li class="breadcrumb-item active">Nouvelle</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">            
+
+            <div class="card">
+              <div class="card-header bg-secondary">
+                <h3 class="card-title text-white">Inscrire une adoption dans le registre de l'Etat Civil</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                {{form_start(form)}}
+                <div class="row">
+                    <div class="col">
+                    {{form_row(form.dateAdoption)}}
+                    </div>
+                    <div class="col">
+                    {{form_row(form.enfantAdopte)}}
+                    </div>
+                    <div class="col m-auto">
+                    <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#modal-default">
+                        <i class="fas fa-search">...</i>
+                    </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                    {{form_row(form.pereAdoptif)}}
+                    </div>
+                    <div class="col">
+                    {{form_row(form.mereAdoptif)}}
+                    </div>
+                    <div class="col">
+                    {{form_row(form.status)}}
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-info">Valider l'inscription</button>
+                {{form_end(form)}}
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->         
+
+{% endblock %}

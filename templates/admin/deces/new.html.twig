@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}NindeSoft ~ Enregistrer un décès{% endblock %}
+{% block title %}Andikwa ~ Enregistrer un décès{% endblock %}
 
 {% block body %}
 
@@ -30,14 +30,14 @@
           <div class="col-12">            
 
             <div class="card">
-              <div class="card-header">
+              <div class="card-header bg-secondary">
                 <h3 class="card-title">Inscrire un cas de décès dans le registre de l'Etat Civil</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
                 {{form_start(form)}}
                 {{form_widget(form)}}
-                <button type="submit" class="btn btn-success">Valider l'inscription</button>
+                <button type="submit" class="btn btn-info">Valider l'inscription</button>
                 {{form_end(form)}}
               </div>
               <!-- /.card-body -->

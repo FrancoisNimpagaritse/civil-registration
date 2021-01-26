@@ -159,6 +159,21 @@ class Personne
      */
     private $epousemariages;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Adoption::class, mappedBy="pereAdoptif")
+     */
+    private $pereAdoptions;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Adoption::class, mappedBy="mereAdoptif")
+     */
+    private $mereAdoptions;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Adoption::class, mappedBy="enfantAdopte", cascade={"persist", "remove"})
+     */
+    private $adoption;
+
     public function __construct()
     {
         $this->pereenfants = new ArrayCollection();
@@ -166,6 +181,8 @@ class Personne
         $this->demandes = new ArrayCollection();
         $this->epouxmariages = new ArrayCollection();
         $this->epousemariages = new ArrayCollection();
+        $this->pereAdoptions = new ArrayCollection();
+        $this->mereAdoptions = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -612,5 +629,82 @@ class Personne
     public function __toString()
     {
         return $this->nom . ' ' . $this->prenom;
+    }
+
+    /**
+     * @return Collection|Adoption[]
+     */
+    public function getPereAdoptions(): Collection
+    {
+        return $this->pereAdoptions;
+    }
+
+    public function addPereAdoption(Adoption $pereAdoption): self
+    {
+        if (!$this->pereAdoptions->contains($pereAdoption)) {
+            $this->pereAdoptions[] = $pereAdoption;
+            $pereAdoption->setPereAdoptif($this);
+        }
+
+        return $this;
+    }
+
+    public function removePereAdoption(Adoption $pereAdoption): self
+    {
+        if ($this->pereAdoptions->removeElement($pereAdoption)) {
+            // set the owning side to null (unless already changed)
+            if ($pereAdoption->getPereAdoptif() === $this) {
+                $pereAdoption->setPereAdoptif(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Adoption[]
+     */
+    public function getMereAdoptions(): Collection
+    {
+        return $this->mereAdoptions;
+    }
+
+    public function addMereAdoption(Adoption $mereAdoption): self
+    {
+        if (!$this->mereAdoptions->contains($mereAdoption)) {
+            $this->mereAdoptions[] = $mereAdoption;
+            $mereAdoption->setMereAdoptif($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMereAdoption(Adoption $mereAdoption): self
+    {
+        if ($this->mereAdoptions->removeElement($mereAdoption)) {
+            // set the owning side to null (unless already changed)
+            if ($mereAdoption->getMereAdoptif() === $this) {
+                $mereAdoption->setMereAdoptif(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getAdoption(): ?Adoption
+    {
+        return $this->adoption;
+    }
+
+    public function setAdoption(Adoption $adoption): self
+    {
+        // set the owning side of the relation if necessary
+        if ($adoption->getEnfantAdopte() !== $this) {
+            $adoption->setEnfantAdopte($this);
+        }
+
+        $this->adoption = $adoption;
+
+        return $this;
     }
 }
