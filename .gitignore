@@ -7,7 +7,7 @@
 /public/bundles/
 #/public/admin_assets/
 /var/
-#/vendor/
+/vendor/
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###
