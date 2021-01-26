@@ -31,7 +31,7 @@
 
             <div class="card">
               <div class="card-header bg-secondary">
-                <h3 class="card-title text-white">Inscrire un enfant dont les parents ne sont pas encore inscrits</h3>
+                <h3 class="card-title text-white">Inscrire un enfant dont seule la mère est déjà inscrite</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -88,75 +88,20 @@
                 <hr class="bg-danger">
                 <div class=" row">
                   <div class="col">
-                  {{form_row(form.nomPere)}}                
-                  </div>
-                  <div class="col"> 
-                  {{form_row(form.prenomPere)}}
-                  </div>
-                  <div class="col"> 
-                  {{form_row(form.dateNaissancePere)}}                
-                  </div>
-                  <div class="col"> 
-                  {{form_row(form.provinceNaissancePere)}}
-                  </div>
-                  <div class="col"> 
-                  {{form_row(form.communeNaissancePere)}}
-                  </div>
-                  <div class="col"> 
-                  {{form_row(form.zoneNaissancePere)}}
-                  </div>
-                </div>
-                <div class=" row">
-                  <div class="col"> 
-                  {{form_row(form.collineNaissancePere)}}
-                  </div>
-                  <div class="col"> 
-                  {{form_row(form.paysNaissancePere)}}
-                  </div>
-                  <div class="col"> 
-                  {{form_row(form.statusVitalPere)}}
-                  </div>
-                  <div class="col"> 
-                  {{form_row(form.sexePere)}}
-                  </div>
-                  <div class="col"> 
-                  {{form_row(form.provinceResidencePere)}}
-                  </div>
-                  <div class="col"> 
-                  {{form_row(form.communeResidencePere)}}
-                  </div>
-                </div>
-                <div class=" row">
-                  <div class="col"> 
-                  {{form_row(form.zoneResidencePere)}}
-                  </div>
-                  <div class="col"> 
-                  {{form_row(form.collineResidencePere)}}
-                  </div>
-                  <div class="col"> 
-                  {{form_row(form.nationalitePere)}}
-                  </div>
-                  <div class="col"> 
-                  {{form_row(form.professionPere)}}
-                  </div>
-                  <div class="col"> 
-                  {{form_row(form.photoPere)}}
-                  </div>
-                  <div class="col"> 
-                  {{form_row(form.pinPere)}} 
+                  {{form_row(form.personnePere)}}                
                   </div>
                 </div>
                 <!-- Mere -->
                 <hr class="bg-danger">
                 <div class=" row">
                   <div class="col">
-                  {{form_row(form.nomMere)}}                
+                  {{form_row(form.nomMere)}}
                   </div>
                   <div class="col"> 
                   {{form_row(form.prenomMere)}}
                   </div>
                   <div class="col"> 
-                  {{form_row(form.dateNaissanceMere)}}                
+                  {{form_row(form.dateNaissanceMere)}}
                   </div>
                   <div class="col"> 
                   {{form_row(form.provinceNaissanceMere)}}

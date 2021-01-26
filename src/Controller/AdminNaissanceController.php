@@ -4,8 +4,11 @@ namespace App\Controller;
 
 use App\Entity\Personne;
 use App\Entity\Naissance;
+use App\Form\NaissanceType;
 use App\Repository\NaissanceRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Form\NaissanceMereInexistantType;
+use App\Form\NaissancePereInexistantType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -38,7 +41,7 @@ class AdminNaissanceController extends AbstractController
 
     /**
      * Permet de faire une inscription du père et de l'enfant et les détails de sa naissance avec une mère déjà inscrite
-     * @Route("/admin/naissance-full/new", name="admin_naissance-full_create")
+     * @Route("/admin/naissance-pere-enfant/new", name="admin_naissance-pere-enfant_create")
      */
     public function createPereEnfantNaissance(Request $request, EntityManagerInterface $manager): Response
     {
@@ -46,7 +49,7 @@ class AdminNaissanceController extends AbstractController
         $personneEnfant = new Personne();
         $objetNaissance = new Naissance();
 
-        $form = $this->createForm(NaissancePereMereInexistantType::class,null);
+        $form = $this->createForm(NaissancePereInexistantType::class,null);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid())
@@ -92,7 +95,7 @@ class AdminNaissanceController extends AbstractController
                     ->setPhoto($data['photoPere'])
                     ->setPin($data['pinPere'])
                     ->setPere($personnePere)
-                    ->setMere($personneMere)
+                    ->setMere($form->get('mere')->getData())
             ;
             
             $objetNaissance->setDateNaissance($data['dateNaissance'])
@@ -132,14 +135,14 @@ class AdminNaissanceController extends AbstractController
             return $this->redirectToRoute('admin_personnes_index');
         }
 
-        return $this->render('admin/naissance/new_pere_mere_enfant.html.twig', [
+        return $this->render('admin/naissance/new_pere_enfant.html.twig', [
             'form' => $form->createView(),
         ]);
     }
 
     /**
      * Permet de faire une inscription d'une mère et de l'enfant et les détails de sa naissance avec un père déjà inscrit
-     * @Route("/admin/naissance-full/new", name="admin_naissance-full_create")
+     * @Route("/admin/naissance-mere-enfant/new", name="admin_naissance-mere-enfant_create")
      */
     public function createMereEnfantNaissance(Request $request, EntityManagerInterface $manager): Response
     {
@@ -147,7 +150,7 @@ class AdminNaissanceController extends AbstractController
         $personneEnfant = new Personne();
         $objetNaissance = new Naissance();
 
-        $form = $this->createForm(NaissancePereMereInexistantType::class,null);
+        $form = $this->createForm(NaissanceMereInexistantType::class,null);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid())
@@ -192,7 +195,7 @@ class AdminNaissanceController extends AbstractController
                     ->setProfession("")
                     ->setPhoto($data['photoPere'])
                     ->setPin($data['pinPere'])
-                    ->setPere($personnePere)
+                    ->setPere($data['personnePere'])
                     ->setMere($personneMere)
             ;
             
@@ -233,23 +236,22 @@ class AdminNaissanceController extends AbstractController
             return $this->redirectToRoute('admin_personnes_index');
         }
 
-        return $this->render('admin/naissance/new_pere_mere_enfant.html.twig', [
+        return $this->render('admin/naissance/new_mere_enfant.html.twig', [
             'form' => $form->createView(),
         ]);
     }
 
     /**
      * Permet de faire une inscription de l'enfant et les détails de sa naissance avec un père et une mère déjà inscrits
-     * @Route("/admin/naissance-full/new", name="admin_naissance-full_create")
+     * @Route("/admin/naissance-enfant/new", name="admin_naissance-enfant_create")
      */
     public function createEnfantNaissance(Request $request, EntityManagerInterface $manager): Response
     {
         $personneEnfant = new Personne();
         $objetNaissance = new Naissance();
 
-        $form = $this->createForm(NaissancePereMereInexistantType::class,null);
+        $form = $this->createForm(NaissanceType::class,null);
         $form->handleRequest($request);
-        $personnePere = new Personne();
 
         if($form->isSubmitted() && $form->isValid())
         {
@@ -273,8 +275,8 @@ class AdminNaissanceController extends AbstractController
                     ->setProfession("")
                     ->setPhoto($data['photoPere'])
                     ->setPin($data['pinPere'])
-                    ->setPere($personnePere)
-                    ->setMere($personneMere)
+                    ->setPere($data['personnePere'])
+                    ->setMere($data['personneMere'])
             ;
             
             $objetNaissance->setDateNaissance($data['dateNaissance'])
@@ -313,7 +315,7 @@ class AdminNaissanceController extends AbstractController
             return $this->redirectToRoute('admin_personnes_index');
         }
 
-        return $this->render('admin/naissance/new_pere_mere_enfant.html.twig', [
+        return $this->render('admin/naissance/new_enfant.html.twig', [
             'form' => $form->createView(),
         ]);
     }

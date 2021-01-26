@@ -6,6 +6,7 @@ use App\Entity\Demande;
 use App\Form\DemandeType;
 use App\Entity\DetailDemande;
 use App\Form\DetailDemandeType;
+use App\Repository\DemandeRepository;
 use App\Repository\DocumentRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,10 +20,10 @@ class AdminDemandeController extends AbstractController
     /**
      * @Route("/admin/demandes", name="admin_demandes_index")
      */
-    public function index(): Response
+    public function index(DemandeRepository $repo): Response
     {
         return $this->render('admin/demande/index.html.twig', [
-            'controller_name' => 'AdminDemandeController',
+            'demandes' => $repo->findAll()
         ]);
     }
 

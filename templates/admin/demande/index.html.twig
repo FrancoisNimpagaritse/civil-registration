@@ -37,35 +37,25 @@
                   <thead>
                   <tr>
                     <th>N°</th>
-                    <th>Date mariage</th>
-                    <th>Célébré en commune</th>
-                    <th>Province</th>
-                    <th>Noms Epoux</th>
-                    <th>Noms Epouse</th>
-                    <th>Date divorce</th>
-                    <th>Lieu divorce</th>
-                    <th>Profession Epoux</th>
-                    <th>Profession Epouse</th>
-                    <th>Référence décision divorce</th>
-                    <th>Nombre d'enfants issus du mariage</th>
+                    <th>Date demande</th>
+                    <th>Demandé en commune</th>
+                    <th>Frais payés</th>
+                    <th>Status</th>
+                    <th>Pièce justificative</th>
+                    <th>Demandeur</th>
                     <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
-                  {% for divorce in divorces %}
+                  {% for demande in demandes %}
                   <tr>
-                    <td>{{divorce.id}}</td>
-                    <td>{{divorce.mariage.dateMariage | date("d/m/Y")}}</td>
-                    <td>{{divorce.mariage.communeMariage}}</td>
-                    <td>{{divorce.mariage.provinceMariage}}</td>
-                    <td>{{divorce.mariage.personneEpoux}}</td>
-                    <td>{{divorce.mariage.personneEpouse}}</td>
-                    <td>{{divorce.datedivorce | date("d/m/Y")}}</td>
-                    <td>{{divorce.lieuDecisionDivorce}}</td>
-                    <td>{{divorce.professionEpoux}}</td>
-                    <td>{{divorce.professionEpouse}}</td>
-                    <td>{{divorce.referenceDecisionDivorce}}</td>
-                    <td>{{divorce.nombreEnfantsIssusMariage}}</td>
+                    <td>{{demande.id}}</td>
+                    <td>{{demande.dateDemande | date("d/m/Y")}}</td>
+                    <td>{{demande.lieuDemande}}</td>
+                    <td>{{demande.fraisTotalDemande}}</td>
+                    <td>{{demande.statusDemande}}</td>
+                    <td>{{demande.numeroRecuPaiement}}</td>
+                    <td>{{demande.personne.nom}} {{demande.personne.prenom}}</td>
                     <td>
                       <a href="#" class="btn btn-xs btn-primary mb-2"><i class="fas fa-pencil-alt"></i></a>
                       <a href="#" class="btn btn-xs btn-danger mb-2"><i class="fas fa-trash-alt"></i></a>
@@ -76,17 +66,12 @@
                   <tfoot>
                   <tr>
                     <th>N°</th>
-                    <th>Date mariage</th>
-                    <th>Célébré en commune</th>
-                    <th>Province</th>
-                    <th>Noms Epoux</th>
-                    <th>Noms Epouse</th>
-                    <th>Date divorce</th>
-                    <th>Lieu divorce</th>
-                    <th>Profession Epoux</th>
-                    <th>Profession Epouse</th>
-                    <th>Référence décision divorce</th>
-                    <th>Nombre d'enfants issus du mariage</th>
+                    <th>Date demande</th>
+                    <th>Demandé en commune</th>
+                    <th>Frais payés</th>
+                    <th>Status</th>
+                    <th>Pièce justificative</th>
+                    <th>Demandeur</th>
                     <th>Action</th>
                   </tr>
                   </tfoot>

@@ -1,0 +1,139 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Andikwa ~ Enregistrer une naissance{% endblock %}
+
+{% block body %}
+
+ <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Fiche d'enregistrement d'une naissance</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Naissances</a></li>
+              <li class="breadcrumb-item active">nouvelle</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">            
+
+            <div class="card">
+              <div class="card-header bg-secondary">
+                <h3 class="card-title text-white">Inscrire un enfant dont les parents sont déjà enregistrés</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                {{form_start(form)}}
+                <div class=" row">
+                    <div class="col">
+                    {{form_row(form.nomEnfant)}}
+                    </div>
+                    <div class="col">
+                    {{form_row(form.prenomEnfant)}}
+                    </div>
+                    <div class="col-2">
+                    {{form_row(form.dateNaissance)}}
+                    </div>
+                    <div class="col-2">
+                    {{form_row(form.dateInscription)}}
+                    </div>
+                </div>
+                <div class=" row">
+                    <div class="col">
+                    {{form_row(form.lieuNaissance)}}
+                    </div>
+                    <div class="col">
+                    {{form_row(form.provinceNaissance)}}
+                    </div>
+                    <div class="col">
+                    {{form_row(form.communeNaissance)}}
+                    </div>
+                    <div class="col">
+                    {{form_row(form.zoneNaissance)}}
+                    </div>
+                    <div class="col">
+                    {{form_row(form.collineNaissance)}}
+                    </div>
+                    <div class="col">
+                    {{form_row(form.paysNaissance)}}
+                    </div>
+                </div>  
+                <div class=" row">
+                  <div class="col mr-3">
+                  {{form_row(form.statusVital)}}
+                   </div>
+                   <div class="col-1"> 
+                  {{form_row(form.sexe)}}
+                   </div>
+                   <div class="col">
+                  {{form_row(form.numeroActeNaissance)}}
+                   </div>
+                   <div class="col"> 
+                  {{form_row(form.numeroVolume)}}
+                   </div>   
+                </div>
+                <!-- Pere  et Mere -->                
+                <hr class="bg-danger">
+                <div class=" row">
+                  <div class="col">
+                  {{form_row(form.personneMere)}}                
+                  </div>
+                  <div class="col"> 
+                  {{form_row(form.personnePere)}}
+                  </div>
+                </div>
+                
+                <!-- Temoins -->
+                <hr class="bg-danger">
+                <div class=" row">
+                  <div class="col"> 
+                    {{form_row(form.nomCompletTemoinUn)}} 
+                  </div>
+                  <div class="col"> 
+                    {{form_row(form.adresseTemoinUn)}} 
+                  </div>
+                  <div class="col"> 
+                    {{form_row(form.professionTemoinUn)}}
+                  </div>
+                </div>
+                <div class=" row">
+                  <div class="col"> 
+                    {{form_row(form.nomCompletTemoinDeux)}}
+                  </div>
+                  <div class="col"> 
+                    {{form_row(form.adresseTemoinDeux)}} 
+                  </div>
+                  <div class="col"> 
+                    {{form_row(form.professionTemoinDeux)}} 
+                  </div>
+                </div>
+
+                <button type="submit" class="btn btn-info">Valider l'inscription</button>
+                {{form_end(form)}}
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+{% endblock %}
