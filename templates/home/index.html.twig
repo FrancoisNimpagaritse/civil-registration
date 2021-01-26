@@ -72,9 +72,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <h1 class="m-0">Bienvenue au logiciel de Gestion d'Etat Civil</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
+            {% if app.user %}
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a class=" text-danger" href="{{ path('account_logout') }}"><i class="fas fa-user-times mr-1"></i>Déconnexion</a></li>              
+            </ol>
+            {% else %}
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{ path('account_login') }}"><i class="fas fa-lock mr-1"></i>Connexion</a></li>              
             </ol>
+            {% endif %}
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->

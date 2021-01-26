@@ -74,12 +74,12 @@
                     <a href="#" class="nav-link" > <strong>Bonjour {{app.user.prenom}}</strong></a>
                     </li>
                     <li class="nav-item">
-                    <a href="{{ path('account_logout') }}" class="nav-link text-danger"><i class="fas fa-user-times"></i> Logout</a>
+                    <a href="{{ path('account_logout') }}" class="nav-link text-danger"><i class="fas fa-user-times"></i> Déconnexion</a>
                     </li>
                     {% else %}
                     
                     <li class="nav-item">
-                        <a href="#" class="nav-link text-success"><i class="fas fa-user"></i> Login</a>
+                        <a href="{{ path('account_login') }}" class="nav-link text-success"><i class="fas fa-user"></i> Connexion</a>
                     </li>
                     
                     {% endif %}

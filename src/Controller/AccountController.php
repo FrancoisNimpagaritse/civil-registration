@@ -10,7 +10,8 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class AccountController extends AbstractController
@@ -63,7 +64,7 @@ class AccountController extends AbstractController
      *
      * @return Response
      */
-    public function register(Request $request, EntityManagerInterface $manager)
+    public function register(Request $request, EntityManagerInterface $manager, UserPasswordEncoderInterface $encoder)
     {
         $user = new User();
         $userRole = new Role();
@@ -72,6 +73,9 @@ class AccountController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid())
         {
+            $hash = $encoder->encodePassword($user, $user->getHash());
+            $user->setHash($hash);
+
             foreach($form->get('userRoles')->getData() as $user_role)
             {
                 //Enregistrer les lignes dans la table association
@@ -83,7 +87,7 @@ class AccountController extends AbstractController
 
             $this->addFlash(
                 'success',
-                "L'utilisateur <strong> {$user->getNom()} et {$user->getPrenom()}</strong> a bien été enregistré !"
+                "L'utilisateur <strong> {$user->getNom()} {$user->getPrenom()}</strong> a bien été enregistré !"
             );
 
             return $this->redirectToRoute('accounts_index');
