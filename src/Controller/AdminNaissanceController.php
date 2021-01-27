@@ -4,11 +4,11 @@ namespace App\Controller;
 
 use App\Entity\Personne;
 use App\Entity\Naissance;
-use App\Form\NaissanceType;
 use App\Repository\NaissanceRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Form\NaissanceMereInexistantType;
 use App\Form\NaissancePereInexistantType;
+use App\Form\NaissanceEnfantInexistantType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -86,16 +86,13 @@ class AdminNaissanceController extends AbstractController
                     ->setPaysNaissance($data['paysNaissance'])
                     ->setStatusVital($data['statusVital'])
                     ->setSexe($data['sexe'])
-                    ->setCollineResidence($data['collineResidenceMere'])
-                    ->setZoneResidence($data['zoneResidenceMere'])
-                    ->setCommuneResidence($data['communeResidenceMere'])
-                    ->setProvinceResidence($data['provinceResidenceMere'])
-                    ->setNationalite($data['nationaliteMere'])
+                    ->setCollineResidence($data['personneMere']->getCollineResidence())
+                    ->setZoneResidence($data['personneMere']->getZoneResidence())
+                    ->setCommuneResidence($data['personneMere']->getCommuneResidence())
+                    ->setProvinceResidence($data['personneMere']->getProvinceResidence())
+                    ->setNationalite($data['nationalitePere'])
                     ->setProfession("")
-                    ->setPhoto($data['photoPere'])
-                    ->setPin($data['pinPere'])
                     ->setPere($personnePere)
-                    ->setMere($form->get('mere')->getData())
             ;
             
             $objetNaissance->setDateNaissance($data['dateNaissance'])
@@ -107,9 +104,9 @@ class AdminNaissanceController extends AbstractController
                            ->setPaysNaissance($data['paysNaissance'])
                            ->setDateInscription(new \DateTime())
                            ->setProfessionPere($data['professionPere'])
-                           ->setProfessionMere($data['professionMere'])
+                           ->setProfessionMere($data['personneMere']->getProfession())
                            ->setAdressePere($data['collineResidencePere'])
-                           ->setAdresseMere($data['collineResidenceMere'])
+                           ->setAdresseMere($data['personneMere']->getCollineResidence())
                            ->setNumeroActeNaissance($data['numeroActeNaissance'])
                             ->setNumeroVolume($data['numeroVolume'])
                             ->setNomCompletTemoinUn($data['nomCompletTemoinUn'])
@@ -129,7 +126,7 @@ class AdminNaissanceController extends AbstractController
 
             $this->addFlash(
                 'success',
-                "L'inscription de la naissance de <strong>{$personneEnfant->getNom()} {$personneEnfant->getPrenom()}</strong> a bien été enregistré !"
+                "L'inscription de la naissance de <strong>{$personneEnfant->getNom()} {$personneEnfant->getPrenom()}</strong> a bien été enregistrée !"
             );
 
             return $this->redirectToRoute('admin_personnes_index');
@@ -192,9 +189,6 @@ class AdminNaissanceController extends AbstractController
                     ->setCommuneResidence($data['communeResidenceMere'])
                     ->setProvinceResidence($data['provinceResidenceMere'])
                     ->setNationalite($data['nationaliteMere'])
-                    ->setProfession("")
-                    ->setPhoto($data['photoPere'])
-                    ->setPin($data['pinPere'])
                     ->setPere($data['personnePere'])
                     ->setMere($personneMere)
             ;
@@ -207,9 +201,9 @@ class AdminNaissanceController extends AbstractController
                            ->setProvinceNaissance($data['provinceNaissance'])
                            ->setPaysNaissance($data['paysNaissance'])
                            ->setDateInscription(new \DateTime())
-                           ->setProfessionPere($data['professionPere'])
+                           ->setProfessionPere($data['personnePere']->getProfession())
                            ->setProfessionMere($data['professionMere'])
-                           ->setAdressePere($data['collineResidencePere'])
+                           ->setAdressePere($data['personnePere']->getCollineResidence())
                            ->setAdresseMere($data['collineResidenceMere'])
                            ->setNumeroActeNaissance($data['numeroActeNaissance'])
                             ->setNumeroVolume($data['numeroVolume'])
@@ -220,6 +214,7 @@ class AdminNaissanceController extends AbstractController
                             ->setAdresseTemoinDeux($data['adresseTemoinDeux'])
                             ->setProfessionTemoinDeux($data['professionTemoinDeux'])
                             ->setPersonne($personneEnfant)
+                            
                         ;
             
             $manager->persist($personneMere);
@@ -230,7 +225,7 @@ class AdminNaissanceController extends AbstractController
 
             $this->addFlash(
                 'success',
-                "L'inscription de la naissance de <strong>{$personneEnfant->getNom()} {$personneEnfant->getPrenom()}</strong> a bien été enregistré !"
+                "L'inscription de la naissance de <strong>{$personneEnfant->getNom()} {$personneEnfant->getPrenom()}</strong> a bien été enregistrée !"
             );
 
             return $this->redirectToRoute('admin_personnes_index');
@@ -250,13 +245,13 @@ class AdminNaissanceController extends AbstractController
         $personneEnfant = new Personne();
         $objetNaissance = new Naissance();
 
-        $form = $this->createForm(NaissanceType::class,null);
+        $form = $this->createForm(NaissanceEnfantInexistantType::class,null);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid())
         {
             $data = $form->getData();
-
+            
             $personneEnfant->setNom($data['nomEnfant'])
                     ->setPrenom($data['prenomEnfant'])                        
                     ->setDateNaissance($data['dateNaissance'])
@@ -267,14 +262,11 @@ class AdminNaissanceController extends AbstractController
                     ->setPaysNaissance($data['paysNaissance'])
                     ->setStatusVital($data['statusVital'])
                     ->setSexe($data['sexe'])
-                    ->setCollineResidence($data['collineResidenceMere'])
-                    ->setZoneResidence($data['zoneResidenceMere'])
-                    ->setCommuneResidence($data['communeResidenceMere'])
-                    ->setProvinceResidence($data['provinceResidenceMere'])
-                    ->setNationalite($data['nationaliteMere'])
-                    ->setProfession("")
-                    ->setPhoto($data['photoPere'])
-                    ->setPin($data['pinPere'])
+                    ->setCollineResidence($data['personneMere']->getCollineResidence())
+                    ->setZoneResidence($data['personneMere']->getZoneResidence())
+                    ->setCommuneResidence($data['personneMere']->getCommuneResidence())
+                    ->setProvinceResidence($data['personneMere']->getProvinceResidence())
+                    ->setNationalite($data['personneMere']->getNationalite())
                     ->setPere($data['personnePere'])
                     ->setMere($data['personneMere'])
             ;
@@ -287,10 +279,10 @@ class AdminNaissanceController extends AbstractController
                            ->setProvinceNaissance($data['provinceNaissance'])
                            ->setPaysNaissance($data['paysNaissance'])
                            ->setDateInscription(new \DateTime())
-                           ->setProfessionPere($data['professionPere'])
-                           ->setProfessionMere($data['professionMere'])
-                           ->setAdressePere($data['collineResidencePere'])
-                           ->setAdresseMere($data['collineResidenceMere'])
+                           ->setProfessionPere($data['personnePere']->getProfession())
+                           ->setProfessionMere($data['personneMere']->getProfession())
+                           ->setAdressePere($data['personnePere']->getCollineResidence())
+                           ->setAdresseMere($data['personneMere']->getCollineResidence())
                            ->setNumeroActeNaissance($data['numeroActeNaissance'])
                             ->setNumeroVolume($data['numeroVolume'])
                             ->setNomCompletTemoinUn($data['nomCompletTemoinUn'])
@@ -309,7 +301,7 @@ class AdminNaissanceController extends AbstractController
 
             $this->addFlash(
                 'success',
-                "L'inscription de la naissance de <strong>{$personneEnfant->getNom()} {$personneEnfant->getPrenom()}</strong> a bien été enregistré !"
+                "L'inscription de la naissance de <strong>{$personneEnfant->getNom()} {$personneEnfant->getPrenom()}</strong> a bien été enregistrée !"
             );
 
             return $this->redirectToRoute('admin_personnes_index');

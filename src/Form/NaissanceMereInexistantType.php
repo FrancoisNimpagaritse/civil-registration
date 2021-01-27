@@ -55,8 +55,8 @@ class NaissanceMereInexistantType extends AbstractType
                 ])
             ->add('paysNaissance', TextType::class, [
                 'label' =>  "Pays naissance",
+                'data' => 'Burundi',
                 'attr'  => [
-                    'placeholder' => "Pays où l'enfant est né si autre que Burundi",
                     ]
                 ])
             ->add('statusVital')
@@ -168,7 +168,10 @@ class NaissanceMereInexistantType extends AbstractType
                     'placeholder' => "Status vital de la mère"
                     ]
                 ])
-            ->add('sexeMere')
+            ->add('sexeMere', TextType::class, [
+                'data' => 'Féminin',
+                'disabled' => true
+            ])
             ->add('collineResidenceMere')
             ->add('zoneResidenceMere')
             ->add('communeResidenceMere', EntityType::class, [
