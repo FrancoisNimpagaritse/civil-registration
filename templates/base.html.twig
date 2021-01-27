@@ -307,7 +307,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ path('admin_documents_index') }}" class="nav-link">
+                            <a href="{{ path('admin_documents_create') }}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Ajouter document</p>
                             </a>
@@ -523,21 +523,21 @@
         <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
         <script src="/admin_assets/dist/js/pages/dashboard.js"></script>
         <script>
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
-</script>
+            $(function () {
+                $("#example1").DataTable({
+                "responsive": true, "lengthChange": false, "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+                }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+                $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+                });
+            });
+        </script>        
     </body>
 </html>

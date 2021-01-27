@@ -18,7 +18,7 @@ class NaissanceType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder            
+        $builder
             ->add('nomEnfant', TextType::class, [
                 'label' =>  "Nom de l'enfant",
                 'attr'  => [
@@ -31,105 +31,105 @@ class NaissanceType extends AbstractType
                     'placeholder' => "Prénoms donnés à l'enfant"
                     ]
                 ])
-                ->add('dateNaissance', DateType::class, [
-                    'label' =>  'Né le',
-                    'widget' => 'single_text',
-                    'attr'  => [
-                        'placeholder' => 'Date de naissance de l\'enfant'
-                        ]
-                    ])
-                ->add('lieuNaissance', TextType::class, [
-                    'label' =>  'Lieu de naissance',
-                    'attr'  => [
-                        'placeholder' => 'Lieu de naissance'
-                        ]
-                    ])
-                ->add('collineNaissance')
-                ->add('zoneNaissance')
-                ->add('communeNaissance', EntityType::class, [
-                    'label' => 'Né en commune',
-                    'class' => Commune::class
-                    ])
-                ->add('provinceNaissance', EntityType::class, [
-                    'label' => 'Né en province',
-                    'class' => Province::class
-                    ])
-                ->add('paysNaissance', TextType::class, [
-                    'label' =>  "Pays naissance",
-                    'attr'  => [
-                        'placeholder' => "Pays où l'enfant est né si autre que Burundi",
-                        ]
-                    ])
-                ->add('statusVital')
-                ->add('sexe', EntityType::class, [
-                    'label' => 'Sexe',
-                    'class' => Genre::class,
-                    'expanded' => true,
-                    'multiple' => false
-                    ])
-                ->add('dateInscription', DateType::class, [
-                    'label' =>  'Enregistré le',
-                    'widget' => 'single_text',
-                    'attr'  => [
-                        'placeholder' => 'Date enregistrement'
-                        ]
-                    ])
-                ->add('numeroActeNaissance', TextType::class, [
-                    'label' =>  "N° Acte de naissance",
-                    'attr'  => [
-                        'placeholder' => "N° de l'acte de naissance"
-                        ]
-                    ])
-                ->add('numeroVolume', TextType::class, [
-                    'label' =>  "N° Volume",
-                    'attr'  => [
-                        'placeholder' => "N° volume"
-                        ]
-                    ])
-                ->add('nomCompletTemoinUn', TextType::class, [
-                    'label' =>  "Noms témoin 1",
-                    'attr'  => [
-                        'placeholder' => "Nom et prénoms du témoin n° 1 ..."
-                        ]
-                    ])
-                ->add('adresseTemoinUn', TextType::class, [
-                    'label' =>  "Adresse témoin 1",
-                    'attr'  => [
-                        'placeholder' => "Adresse complète du témoin n° 1 ..."
-                        ]
-                    ])
-                ->add('professionTemoinUn', TextType::class, [
-                    'label' =>  "Profession témoin 1",
-                    'attr'  => [
-                        'placeholder' => "Profession du témoin n° 1 ..."
-                        ]
-                    ])
-                ->add('nomCompletTemoinDeux', TextType::class, [
-                    'label' =>  "Noms témoin 2",
-                    'attr'  => [
-                        'placeholder' => "Nom et prénoms du témoin n° 2 ..."
-                        ]
-                    ])
-                ->add('adresseTemoinDeux', TextType::class, [
-                    'label' =>  "Adresse témoin 2",
-                    'attr'  => [
-                        'placeholder' => "Adresse complète du témoin n° 2 ..."
-                        ]
-                    ])
-                ->add('professionTemoinDeux', TextType::class, [
-                    'label' =>  "Profession témoin 2",
-                    'attr'  => [
-                        'placeholder' => "Profession du témoin n° 2 ..."
-                        ]
-                    ])
-                ->add('personnePere', EntityType::class, [
-                    'label' => 'Son père',
-                    'class' =>  Personne::class
+            ->add('dateNaissance', DateType::class, [
+                'label' =>  'Né le',
+                'widget' => 'single_text',
+                'attr'  => [
+                    'placeholder' => 'Date de naissance de l\'enfant'
+                    ]
                 ])
-                ->add('personneMere', EntityType::class, [
-                    'label' => 'Sa mère',
-                    'class' =>  Personne::class
+            ->add('lieuNaissance', TextType::class, [
+                'label' =>  'Lieu de naissance',
+                'attr'  => [
+                    'placeholder' => 'Lieu de naissance'
+                    ]
                 ])
+            ->add('collineNaissance')
+            ->add('zoneNaissance')
+            ->add('communeNaissance', EntityType::class, [
+                'label' => 'Né en commune',
+                'class' => Commune::class
+                ])
+            ->add('provinceNaissance', EntityType::class, [
+                'label' => 'Né en province',
+                'class' => Province::class
+                ])
+            ->add('paysNaissance', TextType::class, [
+                'label' =>  "Pays naissance",
+                'attr'  => [
+                    'placeholder' => "Pays où l'enfant est né si autre que Burundi",
+                    ]
+                ])
+            ->add('statusVital')
+            ->add('sexe', EntityType::class, [
+                'label' => 'Sexe',
+                'class' => Genre::class,
+                'expanded' => true,
+                'multiple' => false
+                ])
+            ->add('dateInscription', DateType::class, [
+                'label' =>  'Enregistré le',
+                'widget' => 'single_text',
+                'attr'  => [
+                    'placeholder' => 'Date enregistrement'
+                    ]
+                ])
+            ->add('numeroActeNaissance', TextType::class, [
+                'label' =>  "N° Acte de naissance",
+                'attr'  => [
+                    'placeholder' => "N° de l'acte de naissance"
+                    ]
+                ])
+            ->add('numeroVolume', TextType::class, [
+                'label' =>  "N° Volume",
+                'attr'  => [
+                    'placeholder' => "N° volume"
+                    ]
+                ])
+            ->add('nomCompletTemoinUn', TextType::class, [
+                'label' =>  "Noms témoin 1",
+                'attr'  => [
+                    'placeholder' => "Nom et prénoms du témoin n° 1 ..."
+                    ]
+                ])
+            ->add('adresseTemoinUn', TextType::class, [
+                'label' =>  "Adresse témoin 1",
+                'attr'  => [
+                    'placeholder' => "Adresse complète du témoin n° 1 ..."
+                    ]
+                ])
+            ->add('professionTemoinUn', TextType::class, [
+                'label' =>  "Profession témoin 1",
+                'attr'  => [
+                    'placeholder' => "Profession du témoin n° 1 ..."
+                    ]
+                ])
+            ->add('nomCompletTemoinDeux', TextType::class, [
+                'label' =>  "Noms témoin 2",
+                'attr'  => [
+                    'placeholder' => "Nom et prénoms du témoin n° 2 ..."
+                    ]
+                ])
+            ->add('adresseTemoinDeux', TextType::class, [
+                'label' =>  "Adresse témoin 2",
+                'attr'  => [
+                    'placeholder' => "Adresse complète du témoin n° 2 ..."
+                    ]
+                ])
+            ->add('professionTemoinDeux', TextType::class, [
+                'label' =>  "Profession témoin 2",
+                'attr'  => [
+                    'placeholder' => "Profession du témoin n° 2 ..."
+                    ]
+                ])
+            ->add('personnePere', EntityType::class, [
+                'label' => 'Son père',
+                'class' =>  Personne::class
+            ])
+            ->add('personneMere', EntityType::class, [
+                'label' => 'Sa mère',
+                'class' =>  Personne::class
+            ])
     
         ;
     }
