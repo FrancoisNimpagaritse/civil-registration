@@ -46,6 +46,7 @@ class NaissancePereMereInexistantType extends AbstractType
             ->add('zoneNaissance')
             ->add('communeNaissance', EntityType::class, [
                 'label' => 'Né en commune',
+                'placeholder' => '-- Choix commune --',
                 'class' => Commune::class
                 ])
             ->add('provinceNaissance', EntityType::class, [
@@ -174,6 +175,7 @@ class NaissancePereMereInexistantType extends AbstractType
                 ])
             ->add('provinceResidencePere', EntityType::class, [
                 'label' => 'Réside en province',
+                'placeholder' => '-- Choix province --',
                 'class' => Province::class
                 ])
             ->add('nationalitePere', TextType::class, [
