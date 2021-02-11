@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Deces;
+use App\Entity\EnumCauseDeces;
 use App\Entity\Personne;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -29,15 +30,49 @@ class DecesType extends AbstractType
                     'placeholder' => 'Lieu de décès'
                     ]
                 ])
-            ->add('causeDeces')
-            ->add('nomCompletDemandeur')
-            ->add('adresseDemandeur')
-            ->add('phoneDemandeur')
+            ->add('causeDeces', EntityType::class, [
+                'label' => 'Causedu décès ',
+                'placeholder' => '-- Choix cause --',
+                'class' => EnumCauseDeces::class
+                ])
+            ->add('nomCompletDemandeur', TextType::class, [
+                'label' =>  'Noms complets du demandeur',
+                'attr'  => [
+                    'placeholder' => 'Nom et prénom du demandeur'
+                    ]
+                ])
+            ->add('adresseDemandeur', TextType::class, [
+                'label' =>  'Adresse demandeur',
+                'attr'  => [
+                    'placeholder' => 'Adresse de résidence demandeur'
+                    ]
+                ])
+            ->add('phoneDemandeur', TextType::class, [
+                'label' =>  'Téléphones demandeur',
+                'attr'  => [
+                    'placeholder' => 'Numéros de téléphones demandeur'
+                    ]
+                ])
             ->add('copieCertificatDeces')
-            ->add('numeroActeDeces')
-            ->add('numeroVolume')
+            ->add('numeroActeDeces', TextType::class, [
+                'label' =>  'N° Acte',
+                'attr'  => [
+                    'placeholder' => "Numéro de l'acte de décès"
+                    ]
+                ])
+            ->add('numeroVolume', TextType::class, [
+                'label' =>  'N° Volume',
+                'attr'  => [
+                    'placeholder' => 'Numéro du volume de décès'
+                    ]
+                ])
             ->add('personne', EntityType::class, [
-                'class' => Personne::class
+                'label' => 'Personne décédée',
+                'class' => Personne::class,
+                'placeholder' => '-- Choix personne --',
+                'attr' => [
+                    'class' => 'select2'
+                ]
             ])
         ;
     }

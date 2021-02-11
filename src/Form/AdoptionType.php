@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Adoption;
+use App\Entity\Personne;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -18,9 +20,27 @@ class AdoptionType extends AbstractType
                 'widget' =>'single_text'
             ])
             ->add('status')
-            ->add('pereAdoptif')
-            ->add('mereAdoptif')
-            ->add('enfantAdopte')
+            ->add('pereAdoptif', EntityType::class, [
+                'class' => Personne::class,
+                'placeholder' => '-- Choix père --',
+                'attr' => [
+                    'class' => 'select2'
+                ]
+            ])
+            ->add('mereAdoptif', EntityType::class, [
+                'class' => Personne::class,
+                'placeholder' => '-- Choix mère --',
+                'attr' => [
+                    'class' => 'select2'
+                ]
+            ])
+            ->add('enfantAdopte', EntityType::class, [
+                'class' => Personne::class,
+                'placeholder' => '-- Choix enfant --',
+                'attr' => [
+                    'class' => 'select2'
+                ]
+            ])            
         ;
     }
 

@@ -6,16 +6,14 @@
         <title>{% block title %}Andikwa | Tableau de bord{% endblock %}</title>
         <link rel="icon" type="image/x-icon" href="{{ asset("admin_assets/dist/img/favicon.png") }}" />
         {% block stylesheets %}{% endblock %}
-
         <!-- Google Font: Source Sans Pro -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
         <!-- Font Awesome -->
         <link rel="stylesheet" href="/admin_assets/plugins/fontawesome-free/css/all.min.css">
         <!-- Ionicons -->
         <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-        
-       
-        <!-- Tempusdominus Bootstrap 4 -->
+
+     <!-- Tempusdominus Bootstrap 4 -->
         <link rel="stylesheet" href="/admin_assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
         <!-- iCheck -->
         <link rel="stylesheet" href="/admin_assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
@@ -36,6 +34,10 @@
         <link rel="stylesheet" href="/admin_assets/plugins/daterangepicker/daterangepicker.css">
         <!-- summernote -->
         <link rel="stylesheet" href="/admin_assets/plugins/summernote/summernote-bs4.min.css">
+        <!-- Select2 -->
+  <link rel="stylesheet" href="/admin_assets/plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="/admin_assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+   
     </head>
     <body class="hold-transition sidebar-mini layout-fixed">
         <div class="wrapper">
@@ -164,7 +166,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{ path('admin_personnes_create') }}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
+                            <i class="far fa-plus-square nav-icon"></i>
                             <p>Ajouter une personne</p>
                             </a>
                         </li>
@@ -189,7 +191,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link" data-toggle="modal" data-target="#modal-default">
-                            <i class="far fa-circle nav-icon"></i>
+                            <i class="far fa-plus-square nav-icon"></i>
                             <p>Naissance...</p>
                             </a>
                         </li>
@@ -213,7 +215,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{ path('admin_adoptions_create') }}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
+                            <i class="far fa-plus-square nav-icon"></i>
                             <p>Nouvelle adoption</p>
                             </a>
                         </li>
@@ -237,7 +239,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{ path('admin_deces_create') }}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
+                            <i class="far fa-plus-square nav-icon"></i>
                             <p>Nouveau décès</p>
                             </a>
                         </li>
@@ -261,7 +263,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{ path('admin_mariages_create') }}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
+                            <i class="far fa-plus-square nav-icon"></i>
                             <p>Inscrire un mariage</p>
                             </a>
                         </li>
@@ -285,7 +287,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{ path('admin_divorces_create') }}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
+                            <i class="far fa-plus-square nav-icon"></i>
                             <p>Ajouter divorce</p>
                             </a>
                         </li>                        
@@ -308,7 +310,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{ path('admin_documents_create') }}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
+                            <i class="far fa-plus-square nav-icon"></i>
                             <p>Ajouter document</p>
                             </a>
                         </li>                        
@@ -331,7 +333,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{ path('admin_demandes_create') }}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
+                            <i class="far fa-plus-square nav-icon"></i>
                             <p>Ajouter demande</p>
                             </a>
                         </li>                        
@@ -354,7 +356,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{ path('accounts_register') }}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
+                            <i class="far fa-plus-square nav-icon"></i>
                             <p>Nouvel utilisateur</p>
                             </a>
                         </li>
@@ -483,6 +485,8 @@
         </script>
         <!-- Bootstrap 4 -->
         <script src="/admin_assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Select2 -->
+        <script src="/admin_assets/plugins/select2/js/select2.full.min.js"></script>
         <!-- ChartJS -->
         <script src="/admin_assets/plugins/chart.js/Chart.min.js"></script>
         <!-- Sparkline -->
@@ -524,6 +528,8 @@
         <script src="/admin_assets/dist/js/pages/dashboard.js"></script>
         <script>
             $(function () {
+                //Initialize Select2 Elements
+    $('.select2').select2();
                 $("#example1").DataTable({
                 "responsive": true, "lengthChange": false, "autoWidth": false,
                 "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
@@ -538,6 +544,8 @@
                 "responsive": true,
                 });
             });
-        </script>        
+            
+        </script>
+        
     </body>
 </html>

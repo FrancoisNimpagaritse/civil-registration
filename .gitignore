@@ -8,8 +8,10 @@
 /public/admin_assets/
 /var/
 /vendor/
+/src/admin/cart
+/src/Controller/AdminCartController.php
 ###< symfony/framework-bundle ###
-/etat_civil.sql
+
 ###> symfony/phpunit-bridge ###
 .phpunit
 .phpunit.result.cache

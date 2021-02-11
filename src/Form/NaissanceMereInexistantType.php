@@ -6,6 +6,7 @@ use App\Entity\Genre;
 use App\Entity\Commune;
 use App\Entity\Personne;
 use App\Entity\Province;
+use App\Entity\EnumStatusVital;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -59,7 +60,10 @@ class NaissanceMereInexistantType extends AbstractType
                 'attr'  => [
                     ]
                 ])
-            ->add('statusVital')
+            ->add('statusVital', EntityType::class, [
+                'label' => 'Status vital',
+                'class' => EnumStatusVital::class
+                ])
             ->add('sexe', EntityType::class, [
                 'label' => 'Sexe',
                 'class' => Genre::class,
@@ -124,7 +128,11 @@ class NaissanceMereInexistantType extends AbstractType
 
             ->add('personnePere', EntityType::class, [
                     'label' => 'Son père',
-                    'class' =>  Personne::class
+                    'class' =>  Personne::class,
+                    'placeholder' => '-- Choix père --',
+                    'attr' => [
+                        'class' => 'select2'
+                    ]
                 ])
 
             ->add('nomMere', TextType::class, [

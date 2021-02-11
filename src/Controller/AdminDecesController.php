@@ -27,6 +27,18 @@ class AdminDecesController extends AbstractController
     }
 
     /**
+     * Permet d'afficher les détails d'une naissance pour l'imprimer
+     * 
+     * @Route("/admin/deces/show/{id}", name="admin_deces_show")
+     */
+    public function show(Deces $deces): Response
+    {
+        return $this->render('admin/deces/show_attestation.html.twig', [
+            'deces' => $deces
+        ]);
+    }
+
+    /**
      * Permet d'enregistrer un cas de décès dans le registre d'Etat Civil
      * @Route("/admin/deces/new", name="admin_deces_create")
      */

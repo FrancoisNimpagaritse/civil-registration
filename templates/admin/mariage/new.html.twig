@@ -52,6 +52,9 @@
                     <div class="col"> 
                     {{form_row(form.numeroVolume)}}
                     </div>
+                    <div class="col"> 
+                    {{form_row(form.typeContrat)}}
+                    </div>
                 </div>
                 <hr class="bg-danger">
                 <div class=" row">
@@ -59,15 +62,17 @@
                     {{form_row(form.personneEpoux)}}
                     </div>                    
                     <div class="col">
-                    {{form_row(form.collineResidenceEpoux)}}
+                    {{form_row(form.provinceResidenceEpoux)}}            
+                    </div>
+                    <div class="col">
+                    {{form_row(form.communeResidenceEpoux)}}
                     </div>
                     <div class="col">
                     {{form_row(form.ZoneResidenceEpoux)}}
                     </div>
                     <div class="col">
-                    {{form_row(form.communeResidenceEpoux)}}
+                    {{form_row(form.collineResidenceEpoux)}}
                     </div>
-                    {{form_row(form.provinceResidenceEpoux)}}            
                 </div>
                 <div class=" row">
                     <div class="col">
@@ -86,16 +91,16 @@
                   {{form_row(form.personneEpouse)}}
                   </div>
                   <div class="col"> 
-                  {{form_row(form.collineResidenceEpouse)}}
+                  {{form_row(form.provinceResidenceEpouse)}}
                   </div>
-                  <div class="col"> 
-                  {{form_row(form.zoneResidenceEpouse)}}
-                  </div> 
                   <div class="col"> 
                   {{form_row(form.communeResidenceEpouse)}}
+                  </div> 
+                  <div class="col"> 
+                  {{form_row(form.zoneResidenceEpouse)}}
                   </div>
                   <div class="col"> 
-                  {{form_row(form.provinceResidenceEpouse)}}
+                  {{form_row(form.collineResidenceEpouse)}}
                   </div>                  
                 </div>             
                 
@@ -134,7 +139,7 @@
                   </div>
                 </div>
                 <button type="submit" class="btn btn-info">
-                <i class="fas fa-save"></i>Valider l'inscription</button>
+                <i class="fas fa-save mr-1"></i>Valider l'inscription</button>
                 {{form_end(form)}}
               </div>
               <!-- /.card-body -->

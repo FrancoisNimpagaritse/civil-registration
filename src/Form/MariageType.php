@@ -2,9 +2,12 @@
 
 namespace App\Form;
 
+use App\Entity\EnumContratMariage;
 use App\Entity\Mariage;
+use App\Entity\Personne;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 
@@ -45,8 +48,27 @@ class MariageType extends AbstractType
             ->add('professionTemoinEpoux')
             ->add('professionTemoinEpouse')
             ->add('photoPreuve')
-            ->add('personneEpoux')
-            ->add('personneEpouse')
+            ->add('personneEpoux', EntityType::class, [
+                'label' => "L'époux",
+                'class' =>  Personne::class,
+                'placeholder' => '-- Choix époux --',
+                'attr' => [
+                    'class' => 'select2'
+                ]
+            ])
+            ->add('personneEpouse', EntityType::class, [
+                'label' => "L'épouse",
+                'class' =>  Personne::class,
+                'placeholder' => '-- Choix épouse --',
+                'attr' => [
+                    'class' => 'select2'
+                ]
+            ])
+            ->add('typeContrat', EntityType::class, [
+                'label' => "Type contrat mariage",
+                'class' =>  EnumContratMariage::class,
+                'placeholder' => '-- Type contrat --'                
+            ])
         ;
     }
 
