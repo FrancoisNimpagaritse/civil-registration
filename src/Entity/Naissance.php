@@ -4,9 +4,13 @@ namespace App\Entity;
 
 use App\Repository\NaissanceRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=NaissanceRepository::class)
+ * @Vich\Uploadable
  */
 class Naissance
 {
@@ -127,6 +131,20 @@ class Naissance
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $status;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $naissanceFichierCopieIntegrale;
+
+    /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     * 
+     * @Vich\UploadableField(mapping="naissance_image", fileNameProperty="naissanceFichierCopieIntegrale")
+     * 
+     * @var File|null
+     */
+    private $naissanceImageFile;
 
     public function getId(): ?int
     {
@@ -393,6 +411,57 @@ class Naissance
     public function setStatus(?string $status): self
     {
         $this->status = $status;
+
+        return $this;
+    }
+
+    public function getNaissanceFichierCopieIntegrale(): ?string
+    {
+        return $this->naissanceFichierCopieIntegrale;
+    }
+
+    public function setNaissanceFichierCopieIntegrale(?string $naissanceFichierCopieIntegrale): self
+    {
+        $this->naissanceFichierCopieIntegrale = $naissanceFichierCopieIntegrale;
+
+        return $this;
+    }
+
+    /**
+     * Get nOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @return  File|null
+     */ 
+    public function getNaissanceImageFile(): ?File
+    {
+        return $this->naissanceImageFile;
+    }
+
+    /**
+     * Set nOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @param  File|null  $naissanceImageFile  NOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @return  self
+     */ 
+    public function setNaissanceImageFile(?File $naissanceImageFile = null): self
+    {
+        $this->naissanceImageFile = $naissanceImageFile;
+        if($this->naissanceImageFile instanceof UploadedFile)
+        {
+            $this->updatedAt = new \DateTime('now');
+        }
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }

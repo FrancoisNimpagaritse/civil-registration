@@ -129,7 +129,7 @@ class AdminNaissanceController extends AbstractController
                 "L'inscription de la naissance de <strong>{$personneEnfant->getNom()} {$personneEnfant->getPrenom()}</strong> a bien été enregistrée !"
             );
 
-            return $this->redirectToRoute('admin_personnes_index');
+            return $this->redirectToRoute('admin_naissances_index');
         }
 
         return $this->render('admin/naissance/new_pere_enfant.html.twig', [
@@ -228,7 +228,7 @@ class AdminNaissanceController extends AbstractController
                 "L'inscription de la naissance de <strong>{$personneEnfant->getNom()} {$personneEnfant->getPrenom()}</strong> a bien été enregistrée !"
             );
 
-            return $this->redirectToRoute('admin_personnes_index');
+            return $this->redirectToRoute('admin_naissances_index');
         }
 
         return $this->render('admin/naissance/new_mere_enfant.html.twig', [
@@ -251,7 +251,7 @@ class AdminNaissanceController extends AbstractController
         if($form->isSubmitted() && $form->isValid())
         {
             $data = $form->getData();
-            
+            dd($data);
             $personneEnfant->setNom($data['nomEnfant'])
                     ->setPrenom($data['prenomEnfant'])                        
                     ->setDateNaissance($data['dateNaissance'])
@@ -292,8 +292,10 @@ class AdminNaissanceController extends AbstractController
                             ->setAdresseTemoinDeux($data['adresseTemoinDeux'])
                             ->setProfessionTemoinDeux($data['professionTemoinDeux'])
                             ->setPersonne($personneEnfant)
+             //ikibazo               ->setNaissanceFichierCopieIntegrale($data['naissanceImageFile'])
+                            
                         ;
-                        
+                        dd($objetNaissance);
             $manager->persist($personneEnfant);
             $manager->persist($objetNaissance);
 
@@ -304,7 +306,7 @@ class AdminNaissanceController extends AbstractController
                 "L'inscription de la naissance de <strong>{$personneEnfant->getNom()} {$personneEnfant->getPrenom()}</strong> a bien été enregistrée !"
             );
 
-            return $this->redirectToRoute('admin_personnes_index');
+            return $this->redirectToRoute('admin_naissances_index');
         }
 
         return $this->render('admin/naissance/new_enfant.html.twig', [

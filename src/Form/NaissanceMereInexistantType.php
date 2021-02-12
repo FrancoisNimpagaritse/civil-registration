@@ -12,6 +12,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class NaissanceMereInexistantType extends AbstractType
@@ -202,13 +203,10 @@ class NaissanceMereInexistantType extends AbstractType
                     'placeholder' => "Profession de mère"
                     ]
                 ])
-            ->add('photoMere', TextType::class, [
-                'label' =>  "Photo",
-                'required' => false,
-                'attr'  => [
-                    'placeholder' => "Photo de mère"
-                    ]
-                ])
+            ->add('imageFile', FileType::class, [
+                'label' =>  'Fichier copie identité',
+                'required' => false
+            ])
             ->add('pinMere', TextType::class, [
                 'label' =>  "PIN",
                 'required' => false,

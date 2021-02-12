@@ -12,6 +12,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class NaissanceEnfantInexistantType extends AbstractType
@@ -142,7 +143,10 @@ class NaissanceEnfantInexistantType extends AbstractType
                 'class' => 'select2'
             ]
         ])
-
+        ->add('naissanceImageFile', FileType::class, [
+            'label' =>  'Fichier copie intégrale',
+            'required' => false
+        ])
         ;
     }
 

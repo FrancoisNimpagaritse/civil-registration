@@ -49,6 +49,9 @@
                   <div class="col">
                   {{form_row(form.paysNaissance)}}
                   </div>
+                  <div class="col">
+                  {{form_row(form.imageFile)}}
+                  </div>
                 </div>
                 <hr class="bg-danger">
                 <div class="row">
@@ -109,7 +112,9 @@
                   {{form_row(form.mere)}}
                   </div>
                 </div>
-                <button type="submit" class="btn btn-info"><i class="fas fa-save mr-1"></i> Valider l'inscription</button>
+                <div class="text-right">
+                 <button type="submit" class="btn btn-info"><i class="fas fa-save mr-1"></i> Valider l'inscription</button>
+                </div>
                 {{form_end(form)}}
               </div>
               <!-- /.card-body -->
