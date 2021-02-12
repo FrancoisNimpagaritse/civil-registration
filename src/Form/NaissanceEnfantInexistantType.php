@@ -6,11 +6,13 @@ use App\Entity\Genre;
 use App\Entity\Commune;
 use App\Entity\Personne;
 use App\Entity\Province;
+use App\Entity\EnumStatusVital;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class NaissanceEnfantInexistantType extends AbstractType
@@ -59,7 +61,11 @@ class NaissanceEnfantInexistantType extends AbstractType
             'attr'  => [
                 ]
             ])
-        ->add('statusVital')
+        ->add('statusVital', EntityType::class, [
+            'label' => 'Status vital',
+            'placeholder' => '-- Choix status vital --',
+            'class' => EnumStatusVital::class
+            ])
         ->add('sexe', EntityType::class, [
             'label' => 'Sexe',
             'class' => Genre::class,
@@ -123,13 +129,24 @@ class NaissanceEnfantInexistantType extends AbstractType
             ])
         ->add('personnePere', EntityType::class, [
             'label' => 'Son père',
-            'class' =>  Personne::class
+            'placeholder' => '-- Choix père --',
+            'class' =>  Personne::class,
+            'attr' => [
+                'class' => 'select2'
+            ]
         ])
         ->add('personneMere', EntityType::class, [
             'label' => 'Sa mère',
-            'class' =>  Personne::class
+            'placeholder' => '-- Choix mère --',
+            'class' =>  Personne::class,
+            'attr' => [
+                'class' => 'select2'
+            ]
         ])
-
+        ->add('naissanceImageFile', FileType::class, [
+            'label' =>  'Fichier copie intégrale',
+            'required' => false
+        ])
         ;
     }
 

@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Andikwa ~ Registre des personnes{% endblock %}
+
+{% block body %}
+
+ <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Registre des personnes - Détails de {{personne.nom}} {{personne.nom}}</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Personnes</a></li>
+              <li class="breadcrumb-item active">détails</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+
+            <div class="card">
+           <!--   <div class="card-header">
+                <h3 class="card-title">Liste des personnes inscrites dans le registre d'Etat Civil</h3>
+              </div> -->
+              <!-- /.card-header -->
+              <div class="card-body">
+                
+                    <p>{{personne.id}}</p>
+                    <p>{{personne.nom}}</p>
+                    <p>{{personne.prenom}}</p>
+                    <p>{{personne.dateNaissance | date("d/m/Y")}}</p>
+                    <p>{{personne.collineNaissance}}</p>
+                    <p>{{personne.zoneNaissance}}</p>
+                    <p>{{personne.communeNaissance}}</p>
+                    <p>{{personne.provinceNaissance}}</p>
+                    <p>{{personne.statusVital}}</p>
+                    <p>{{personne.sexe}}</p>
+                    <p>{{personne.collineResidence}}</p>
+                    <p>{{personne.zoneResidence}}</p>
+                    <p>{{personne.communeResidence}}</p>
+                    <p>{{personne.provinceResidence}}</p>
+                    <p>{{personne.profession}}</p>
+                    <p>{{personne.numeroCarteNationaleIdentite}}</p>
+                    <p>
+                        <img src=" {{asset('images/registre_personnes/' ~ personne.imageIdentite)}} " alt="">
+                    </p>                   
+                  
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+{% endblock %}

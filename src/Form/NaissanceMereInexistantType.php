@@ -6,11 +6,13 @@ use App\Entity\Genre;
 use App\Entity\Commune;
 use App\Entity\Personne;
 use App\Entity\Province;
+use App\Entity\EnumStatusVital;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class NaissanceMereInexistantType extends AbstractType
@@ -59,7 +61,10 @@ class NaissanceMereInexistantType extends AbstractType
                 'attr'  => [
                     ]
                 ])
-            ->add('statusVital')
+            ->add('statusVital', EntityType::class, [
+                'label' => 'Status vital',
+                'class' => EnumStatusVital::class
+                ])
             ->add('sexe', EntityType::class, [
                 'label' => 'Sexe',
                 'class' => Genre::class,
@@ -124,7 +129,11 @@ class NaissanceMereInexistantType extends AbstractType
 
             ->add('personnePere', EntityType::class, [
                     'label' => 'Son père',
-                    'class' =>  Personne::class
+                    'class' =>  Personne::class,
+                    'placeholder' => '-- Choix père --',
+                    'attr' => [
+                        'class' => 'select2'
+                    ]
                 ])
 
             ->add('nomMere', TextType::class, [
@@ -194,13 +203,10 @@ class NaissanceMereInexistantType extends AbstractType
                     'placeholder' => "Profession de mère"
                     ]
                 ])
-            ->add('photoMere', TextType::class, [
-                'label' =>  "Photo",
-                'required' => false,
-                'attr'  => [
-                    'placeholder' => "Photo de mère"
-                    ]
-                ])
+            ->add('imageFile', FileType::class, [
+                'label' =>  'Fichier copie identité',
+                'required' => false
+            ])
             ->add('pinMere', TextType::class, [
                 'label' =>  "PIN",
                 'required' => false,

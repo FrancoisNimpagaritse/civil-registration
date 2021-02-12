@@ -19,6 +19,7 @@ class AccountController extends AbstractController
     /**
      * Permet d'afficher la liste des utilisateurs enregistrés
      * @Route("/accounts", name="accounts_index")
+     * 
      */
     public function index(UserRepository $repo): Response
     {

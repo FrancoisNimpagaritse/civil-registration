@@ -1,0 +1,110 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Andikwa ~ Attestation de décès{% endblock %}
+
+{% block body %}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Attestation de décès de: {{deces.personne.nom}} {{deces.personne.prenom}}</h1>
+          </div>
+          <div class="col-sm-6">
+            
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <section class="content">
+      <div class="container-fluid">
+            
+
+
+            <!-- Main content -->
+            <div class="invoice p-3 mb-3">
+            
+            <div class="row">
+                <div class="col-10">
+                    <h4>
+                        <i class=""></i> REPUBLIQUE DU BURUNDI
+                        <small class="float-right">Date: {{ "now"|date("m/d/Y") }}</small>
+                    </h4>
+                </div>
+            </div>
+            <!-- info row -->
+            <div class="row invoice-info">
+                <div class="col-sm-5 invoice-col">                    
+                    MINISTERE DE L'INTERIEUR ET DE LA SECURITE PUBLIQUE
+                    <address>
+                    PROVINCE {{deces.personne.provinceNaissance}}<br>                    
+                    COMMUNE {{deces.personne.communeNaissance}}<br>
+                    Téléphone: (+257) 123-5432
+                    </address>
+                </div>
+            <!-- /.col -->                
+            </div>
+              <!-- /.row -->
+            <div class="row">
+                <div class="col"></div>
+                <div class="col">
+                <h4 class=""><u>Attestation de décès N° ............ </u></h4>
+                </div>
+                <div class="col"></div>
+            </div>
+              <!-- info row -->
+            <div class="row invoice-info">
+            <div class="col-sm-10 invoice-col ">
+                <p>Je soussigné, <strong>{{app.user.nom}} {{app.user.prenom}}</strong>, Officier d'Etat Civil,
+                atteste par la présente le décès de <strong>{{deces.personne.nom}}</strong> <strong>{{deces.personne.prenom}}</strong> résidant à <strong>{{deces.personne.collineResidence}}</strong>, zone <strong>{{deces.personne.zoneResidence}}</strong>
+                commune <strong>{{deces.personne.communeResidence}}</strong> province <strong>{{deces.personne.provinceResidence}}</strong>, décès survenu à <strong>{{deces.lieuDeces}}</strong> et causé par <strong>{{deces.causeDeces}}</strong>.
+                </p>
+                <p>Le déces nous a été communiqué par <strong>{{deces.nomCompletDemandeur}}</strong> résidant
+                à <strong>{{deces.adresseDemandeur}}</strong>, <strong>{{deces.phoneDemandeur}}</strong>.
+                <br>
+                <br>
+                </p>            
+            </div>
+          </div>
+              <!-- /.row -->
+              <!-- Table row -->
+              <div class="row">
+                <div class="col-12 table-responsive">                  
+                </div>
+               
+                <div class="col-6">
+                  <p class="lead"></p>
+                  
+                </div>
+                <!-- /.col -->
+                <div class="col-6">
+                  <p class="lead"><strong>Fait à {{deces.personne.communeResidence}}</strong>,  le {{ "now"|date("m/d/Y") }}</p>
+                  <p class="lead"><strong>L'Officier de l'Etat Civil</strong></p>
+                </div>
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
+
+              <!-- this row will not appear when printing -->
+              <div class="row no-print">
+                <div class="col-12">
+                  <a href="#" rel="noopener" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</a>
+                  
+                  <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
+                    <i class="fas fa-download"></i> Generate PDF
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- /.invoice -->
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+{% endblock %}

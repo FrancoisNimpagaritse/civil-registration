@@ -169,6 +169,11 @@ class Mariage
      */
     private $status;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $typeContrat;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -540,6 +545,18 @@ class Mariage
     public function setStatus(?string $status): self
     {
         $this->status = $status;
+
+        return $this;
+    }
+
+    public function getTypeContrat(): ?string
+    {
+        return $this->typeContrat;
+    }
+
+    public function setTypeContrat(?string $typeContrat): self
+    {
+        $this->typeContrat = $typeContrat;
 
         return $this;
     }

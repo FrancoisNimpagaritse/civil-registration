@@ -47,7 +47,7 @@ class AdminPersonneController extends AbstractController
 
             $this->addFlash(
                 'success',
-                "La personne du nom de <strong> {$personne->getNom()} {$personne->getPrenom()}</strong> a bien été enregistré !"
+                "La personne du nom de <strong> {$personne->getNom()} {$personne->getPrenom()}</strong> a bien été enregistrée !"
             );
 
             return $this->redirectToRoute('admin_personnes_index');
@@ -84,6 +84,20 @@ class AdminPersonneController extends AbstractController
 
         return $this->render('admin/personne/edit.html.twig', [
             'form' => $form->createView(),
+            'personne' => $personne
+        ]);
+    }
+
+    /**
+     * Permet d'afficher les détails d'une personne du registre d'Etat Civil
+     * 
+     * @Route("/admin/personnes/show/{id}", name="admin_personnes_show")
+     */
+    public function show($id, PersonneRepository $repo): Response
+    {
+       $personne = $repo->findOneById($id);
+
+        return $this->render('admin/personne/show.html.twig', [
             'personne' => $personne
         ]);
     }

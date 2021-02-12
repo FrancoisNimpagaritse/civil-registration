@@ -146,8 +146,8 @@
                   <div class="col"> 
                   {{form_row(form.professionMere)}}
                   </div>
-                  <div class="col"> 
-                  {{form_row(form.photoMere)}}
+                  <div class="col">
+                  {{form_row(form.imageFile)}}
                   </div>
                   <div class="col"> 
                   {{form_row(form.pinMere)}} 
@@ -178,8 +178,8 @@
                     {{form_row(form.professionTemoinDeux)}} 
                   </div>
                 </div>
-
-                <button type="submit" class="btn btn-info">Valider l'inscription</button>
+                <button type="submit" class="btn btn-info">
+                <i class="fas fa-save mr-1"></i>Valider l'inscription</button>
                 {{form_end(form)}}
               </div>
               <!-- /.card-body -->
@@ -195,4 +195,7 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+  <script>
+    $('.js-select-personne').select2();
+  </script>
 {% endblock %}

@@ -5,9 +5,11 @@
 /.env.*.local
 /config/secrets/prod/prod.decrypt.private.php
 /public/bundles/
-#/public/admin_assets/
+/public/admin_assets/
 /var/
-#/vendor/
+/vendor/
+/src/admin/cart
+/src/Controller/AdminCartController.php
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###

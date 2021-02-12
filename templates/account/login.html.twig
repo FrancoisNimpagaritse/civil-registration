@@ -39,7 +39,7 @@
             Une erreur est survenue, l'email ou le mot de passe entré est invalide !
         </div>
       {% endif %}
-      <form action="{{ path('account_login') }}" method="post">
+      <form action="{{ path('account_login') }}" method="post" autocomplete="off">
         <div class="input-group mb-3">
           <input type="email" name="_username" id="email" class="form-control" value="{{username}}" placeholder="Adresse email">
           <div class="input-group-append">

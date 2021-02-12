@@ -11,7 +11,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Registre des personnes décédées</h1>
+            <h1>Registre des décès</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -35,9 +35,42 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                {{form_start(form)}}
-                {{form_widget(form)}}
-                <button type="submit" class="btn btn-info">Valider l'inscription</button>
+              {{form_start(form)}}
+                <div class="row">
+                  <div class="col">
+                  {{form_row(form.dateDeces)}}
+                  </div>
+                  <div class="col">
+                  {{form_row(form.lieuDeces)}}
+                  </div>
+                  <div class="col">
+                  {{form_row(form.causeDeces)}}
+                  </div>
+                  <div class="col">
+                  {{form_row(form.numeroActeDeces)}}
+                  </div>
+                  <div class="col">
+                  {{form_row(form.numeroVolume)}}
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                  {{form_row(form.personne)}}
+                  </div>
+                  <div class="col">
+                  {{form_row(form.nomCompletDemandeur)}}
+                  </div>
+                  <div class="col">
+                  {{form_row(form.adresseDemandeur)}}
+                  </div>
+                  <div class="col">
+                  {{form_row(form.phoneDemandeur)}}
+                  </div>
+                  <div class="col">
+                  {{form_row(form.copieCertificatDeces)}}
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-info"><i class="fas fa-save mr-1"></i>Valider l'inscription</button>
                 {{form_end(form)}}
               </div>
               <!-- /.card-body -->
@@ -53,4 +86,7 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+  <script>
+    $('.js-select-personne').select2();
+  </script>
 {% endblock %}

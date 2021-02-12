@@ -2,13 +2,16 @@
 
 namespace App\Entity;
 
-use App\Repository\PersonneRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-
+use App\Repository\PersonneRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 /**
  * @ORM\Entity(repositoryClass=PersonneRepository::class)
+ * @Vich\Uploadable
  */
 class Personne
 {
@@ -173,6 +176,20 @@ class Personne
      * @ORM\OneToOne(targetEntity=Adoption::class, mappedBy="enfantAdopte", cascade={"persist", "remove"})
      */
     private $adoption;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $imageIdentite;
+
+    /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     * 
+     * @Vich\UploadableField(mapping="personne_image", fileNameProperty="imageIdentite")
+     * 
+     * @var File|null
+     */
+    private $imageFile;
 
     public function __construct()
     {
@@ -704,6 +721,57 @@ class Personne
         }
 
         $this->adoption = $adoption;
+
+        return $this;
+    }
+
+    public function getImageIdentite(): ?string
+    {
+        return $this->imageIdentite;
+    }
+
+    public function setImageIdentite(?string $imageIdentite): self
+    {
+        $this->imageIdentite = $imageIdentite;
+
+        return $this;
+    }
+
+    /**
+     * Get nOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @return  File|null
+     */ 
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+    
+    /**
+     * Set nOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @param  File|null  $imageFile  NOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @return  self
+     */ 
+    public function setImageFile(?File $imageFile = null): self
+    {
+        $this->imageFile = $imageFile;
+        if($this->imageFile instanceof UploadedFile)
+        {
+            $this->updatedAt = new \DateTime('now');
+        }
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }

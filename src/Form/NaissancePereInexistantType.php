@@ -6,11 +6,13 @@ use App\Entity\Genre;
 use App\Entity\Commune;
 use App\Entity\Personne;
 use App\Entity\Province;
+use App\Entity\EnumStatusVital;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class NaissancePereInexistantType extends AbstractType
@@ -59,7 +61,10 @@ class NaissancePereInexistantType extends AbstractType
                 'attr'  => [
                     ]
                 ])
-            ->add('statusVital')
+            ->add('statusVital', EntityType::class, [
+                'label' => 'Status vital',
+                'class' => EnumStatusVital::class
+                ])
             ->add('sexe', EntityType::class, [
                 'label' => 'Sexe',
                 'class' => Genre::class,
@@ -189,12 +194,9 @@ class NaissancePereInexistantType extends AbstractType
                     'placeholder' => "Profession du père"
                     ]
                 ])
-            ->add('photoPere', TextType::class, [
-                'label' => 'Photo',
-                'required' => false,
-                'attr'  => [
-                    'placeholder' => "Photo du père"
-                ]
+            ->add('imageFile', FileType::class, [
+                'label' =>  'Fichier copie identité',
+                'required' => false
             ])
             ->add('pinPere', TextType::class, [
                 'label' => 'PIN',
@@ -205,7 +207,11 @@ class NaissancePereInexistantType extends AbstractType
             ])            
             ->add('personneMere', EntityType::class, [
                 'label' => 'Sa mère',
-                'class' =>  Personne::class
+                'class' =>  Personne::class,
+                'placeholder' => '-- Choix mère --',
+                'attr' => [
+                    'class' => 'select2'
+                ]
             ])
         ;
     }

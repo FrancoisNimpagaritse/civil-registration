@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'ef7369ab42c1de15527ff9da7d2dc00b574d87fe',
+    'reference' => 'f7865939a51b84caf4f66793676abc17dd5f2401',
     'name' => '__root__',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'ef7369ab42c1de15527ff9da7d2dc00b574d87fe',
+      'reference' => 'f7865939a51b84caf4f66793676abc17dd5f2401',
     ),
     'composer/package-versions-deprecated' => 
     array (
@@ -208,6 +208,15 @@
       array (
       ),
       'reference' => '848d8125239d7dbf8ab25cb7f054f1a630e68c2e',
+    ),
+    'jms/metadata' => 
+    array (
+      'pretty_version' => '2.4.0',
+      'version' => '2.4.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '491917b66b44deff7d1c320d35c1b92237083f67',
     ),
     'laminas/laminas-code' => 
     array (
@@ -1080,6 +1089,15 @@
       array (
       ),
       'reference' => 'f795ca686d38530045859b0350b5352f7d63447d',
+    ),
+    'vich/uploader-bundle' => 
+    array (
+      'pretty_version' => '1.15.0',
+      'version' => '1.15.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '07658fb47429d7e108fa43d8c74ca8cd7edaa0d9',
     ),
     'webmozart/assert' => 
     array (

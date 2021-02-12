@@ -5,11 +5,13 @@ namespace App\Form;
 use App\Entity\Genre;
 use App\Entity\Commune;
 use App\Entity\Province;
+use App\Entity\EnumStatusVital;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class NaissancePereMereInexistantType extends AbstractType
@@ -46,6 +48,7 @@ class NaissancePereMereInexistantType extends AbstractType
             ->add('zoneNaissance')
             ->add('communeNaissance', EntityType::class, [
                 'label' => 'Né en commune',
+                'placeholder' => '-- Choix commune --',
                 'class' => Commune::class
                 ])
             ->add('provinceNaissance', EntityType::class, [
@@ -58,7 +61,10 @@ class NaissancePereMereInexistantType extends AbstractType
                 'attr'  => [
                     ]
                 ])
-            ->add('statusVital')
+            ->add('statusVital', EntityType::class, [
+                'label' => 'Status vital',
+                'class' => EnumStatusVital::class
+                ])
             ->add('sexe', EntityType::class, [
                 'label' => 'Sexe',
                 'class' => Genre::class,
@@ -174,6 +180,7 @@ class NaissancePereMereInexistantType extends AbstractType
                 ])
             ->add('provinceResidencePere', EntityType::class, [
                 'label' => 'Réside en province',
+                'placeholder' => '-- Choix province --',
                 'class' => Province::class
                 ])
             ->add('nationalitePere', TextType::class, [
@@ -188,13 +195,10 @@ class NaissancePereMereInexistantType extends AbstractType
                     'placeholder' => "Profession du père"
                     ]
                 ])
-            ->add('photoPere', TextType::class, [
-                'label' => 'Photo',
-                'required' => false,
-                'attr'  => [
-                    'placeholder' => "Photo du père"
-                    ]
-                ])
+            ->add('imageFilePere', FileType::class, [
+                'label' =>  'Fichier copie identité',
+                'required' => false
+            ])
             ->add('pinPere', TextType::class, [
                 'label' => 'PIN',
                 'required' => false,
@@ -270,13 +274,10 @@ class NaissancePereMereInexistantType extends AbstractType
                     'placeholder' => "Profession de mère"
                     ]
                 ])
-            ->add('photoMere', TextType::class, [
-                'label' =>  "Photo",
-                'required' => false,
-                'attr'  => [
-                    'placeholder' => "Photo de mère"
-                    ]
-                ])
+            ->add('imageFileMere', FileType::class, [
+                'label' =>  'Fichier copie identité',
+                'required' => false
+            ])
             ->add('pinMere', TextType::class, [
                 'label' =>  "PIN",
                 'required' => false,
