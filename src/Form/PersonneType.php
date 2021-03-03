@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Genre;
 use App\Entity\Commune;
+use App\Entity\EnumStatusVital;
 use App\Entity\Personne;
 use App\Entity\Province;
 use Symfony\Component\Form\FormEvent;
@@ -62,7 +63,10 @@ class PersonneType extends AbstractType
                 'class' => Province::class
                 ]) 
             ->add('paysNaissance')
-            ->add('statusVital')
+            ->add('statusVital', EntityType::class, [
+                'label' => "Statut vital",
+                'class' => EnumStatusVital::class
+            ])
             ->add('sexe', EntityType::class, [
                 'label' => 'Sexe',
                 'class' => Genre::class,
@@ -89,7 +93,7 @@ class PersonneType extends AbstractType
             ->add('pere')
             ->add('mere')
             ->add('imageFile', FileType::class, [
-                'label' =>  'Fichier copie identité',
+                'label' =>  'Copie identité',
                 'required' => false
             ])
         ;                

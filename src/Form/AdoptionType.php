@@ -4,11 +4,12 @@ namespace App\Form;
 
 use App\Entity\Adoption;
 use App\Entity\Personne;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class AdoptionType extends AbstractType
 {
@@ -40,10 +41,13 @@ class AdoptionType extends AbstractType
                 'attr' => [
                     'class' => 'select2'
                 ]
-            ])            
+            ]) 
+            ->add('imageFile', FileType::class, [
+                'label' =>  'Copie intégrale',
+                'required' => false
+            ])           
         ;
     }
-
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([

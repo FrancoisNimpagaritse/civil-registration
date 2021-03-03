@@ -292,7 +292,7 @@ class AdminNaissanceController extends AbstractController
                             ->setAdresseTemoinDeux($data['adresseTemoinDeux'])
                             ->setProfessionTemoinDeux($data['professionTemoinDeux'])
                             ->setPersonne($personneEnfant)
-             //ikibazo               ->setNaissanceFichierCopieIntegrale($data['naissanceImageFile'])
+             //ikibazo      ->setNaissanceFichierCopieIntegrale($data['naissanceImageFile'])
                             
                         ;
                         dd($objetNaissance);
@@ -325,4 +325,6 @@ class AdminNaissanceController extends AbstractController
             'naissance' => $naissance
         ]);
     }
+
+    
 }
