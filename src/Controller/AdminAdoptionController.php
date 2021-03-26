@@ -25,6 +25,17 @@ class AdminAdoptionController extends AbstractController
     }
 
     /**
+     * Permet d'afficher les adoptions pour impression
+     * @Route("/admin/adoptions-attestations", name="admin_adoptions_attestations_index")
+     */
+    public function indexPrint(AdoptionRepository $repo): Response
+    {
+        return $this->render('admin/adoption/index_extrait_acte_adoption.html.twig', [
+            'adoptions' => $repo->findAll()
+        ]);
+    }
+
+    /**
      * Permet d'ajouter une inscription d'adoption
      * @Route("/admin/adoptions/new", name="admin_adoptions_create")
      */

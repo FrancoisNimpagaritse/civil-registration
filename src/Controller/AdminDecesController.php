@@ -27,6 +27,19 @@ class AdminDecesController extends AbstractController
     }
 
     /**
+     * Permet d'afficher la liste des décès pour impression
+     * @Route("/admin/deces-attestions", name="admin_deces_attestations_index")
+     */
+    public function indexPrint(DecesRepository $repo): Response
+    {
+        $deces = $repo->findAll();
+
+        return $this->render('admin/deces/index_extrait_acte_deces.html.twig', [
+            'deces' => $deces
+        ]);
+    }
+
+    /**
      * Permet d'afficher les détails d'une naissance pour l'imprimer
      * 
      * @Route("/admin/deces/show/{id}", name="admin_deces_show")

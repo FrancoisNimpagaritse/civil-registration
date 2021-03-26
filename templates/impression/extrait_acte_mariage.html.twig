@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>    
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Andikwa | Extrait acte naissance</title>
+    </head>
+    <body> 
+        <div>
+            <h4>REPUBLIQUE DU BURUNDI</h4>    
+            <h4>MINISTERE DE L’INTERIEUR,</h4>
+            <h4>DU DEVELOPPEMENT COMMUNAUTAIRE</h4>
+            <h4>ET DE LA SECURITE PUBLIQUE</h4>
+            <div><h4>PROVINCE: <i><strong>{{ mariage.provinceMariage }}</strong></i></h4></div>
+            <h4>COMMUNE: <i><strong>{{ mariage.communeMariage }}</strong></i></h4>
+            
+            <p>N° Acte: <i><strong>{{ mariage.numeroActeMariage }}</strong></i></p>
+            <p>N° Volume: <i><strong>{{ mariage.numeroVolume }}</strong></i></p>
+            <div class="text-center">
+            <p><strong><u>EXTRAIT D’ACTE DE MARIAGE</u></strong></p>
+            <p></p>
+            </div>
+            <p>L’an <i><strong>{{mariage.dateMariage|date("Y")}}</strong></i>, le <i><strong>{{mariage.dateMariage|date("d")}}</strong></i> ème jour du mois  <i><strong>{{mariage.dateMariage|date("m")}}</strong></i>, ont contracté un mariage le nommé</p>
+            <p><i><strong>{{ mariage.personneEpoux.nom }}</strong> <strong>{{ mariage.personneEpoux.prenom }}</strong></i>
+            fils de <i><strong>{{ mariage.nomCompletPereEpoux }}</strong></i> et de <i><strong>{{ mariage.nomCompletMereEpoux }}</strong></i>, âgé de <i><strong>{{ mariage.dateMariage|date("Y") - mariage.personneEpoux.dateNaissance|date("Y")}}</strong></i> ans, résidant à <i><strong>{{ mariage.communeResidenceEpoux }} - {{mariage.provinceResidenceEpoux}}</strong></i>, de nationalité <i><strong>{{ mariage.personneEpoux.nationalite }}</strong></i> , profession: <i><strong>{{ mariage.occupationEpoux }}</strong></i>.</p>
+            <p>Et la nommée <i><strong>{{ mariage.personneEpouse.nom }}</strong> <strong>{{ mariage.personneEpouse.prenom }}</strong></i>,
+            fille de <i><strong>{{ mariage.nomCompletPereEpouse }}</strong></i> et de <i><strong>{{ mariage.nomCompletMereEpouse }}</strong></i> âgée de <i><strong>{{ mariage.dateMariage|date("Y") - mariage.personneEpouse.dateNaissance|date("Y")}}</strong></i> ans, résidant à <i><strong>{{ mariage.communeResidenceEpoux }} - {{mariage.provinceResidenceEpoux}}</strong></i>, de nationalité <i><strong>{{ mariage.personneEpouse.nationalite }}</strong></i>, Profession: <i><strong>{{ mariage.occupationEpouse }}</strong></i>.</p> 
+            <p></p>
+            <p></p>
+            <p></p>
+            <div>
+                <p><strong> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; POUR EXTRAIT CERTIFIE CONFORME</strong></p>
+                <p><strong> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Le <i><strong>{{"now"|date("d")}}</strong></i>/<i><strong>{{"now"|date("m")}}</strong></i>/<i><strong>{{"now"|date("Y")}}</strong></i></strong></p>
+                <p><strong> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; L’OFFICIER DE L’ETAT-CIVIL</strong></p>
+                <p><strong> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <i>{{ app.user.nom }} {{ app.user.prenom }}</i></strong></p>
+            </div></div>
+        </div>
+    </body>
+</html>

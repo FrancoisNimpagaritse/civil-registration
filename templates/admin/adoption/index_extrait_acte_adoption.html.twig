@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Andikwa ~ Registre des adoptions{% endblock %}
+
+{% block body %}
+
+ <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Registre des adoptions</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Adoptions</a></li>
+              <li class="breadcrumb-item active">Liste</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">            
+
+            <div class="card">
+              
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Sexe</th>
+                    <th>Adopté(e) le</th>
+                    <th>Père adoptif</th>
+                    <th>Mère adoptif</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for adoption in adoptions %}
+                  <tr>
+                    <td>{{adoption.id}}</td>
+                    <td>{{adoption.enfantAdopte.nom}}</td>
+                    <td>{{adoption.enfantAdopte.prenom}}</td>
+                    <td>{{adoption.enfantAdopte.sexe}}</td>
+                    <td>{{adoption.dateAdoption | date("d/m/Y")}}</td>
+                    <td>{{adoption.pereAdoptif.nom}} {{adoption.pereAdoptif.prenom}}</td>
+                    <td>{{adoption.mereAdoptif.nom}} {{adoption.mereAdoptif.prenom}}</td>
+                    <td>{{adoption.status}}</td>
+                    <td>
+                      <a href="{{ path('impression_extrait_acte_adoption', {'id': adoption.id}) }}" target="_blank" class="btn btn-xs btn-primary mb-2"><i class="fas fa-print"></i></a>
+                    </td>
+                  </tr>                      
+                  {% endfor %}                 
+                  </tbody>
+                  <tfoot>
+                  <tr>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Sexe</th>
+                    <th>Adopté(e) le</th>
+                    <th>Père adoptif</th>
+                    <th>Mère adoptif</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+{% endblock %}

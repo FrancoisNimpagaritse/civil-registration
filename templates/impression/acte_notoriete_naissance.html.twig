@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>    
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Andikwa | Extrait acte naissance</title>
+    </head>
+    <body> 
+        <div>
+            <h4>REPUBLIQUE DU BURUNDI</h4>    
+            <h4>MINISTERE DE L’INTERIEUR,</h4>
+            <h4>DU DEVELOPPEMENT COMMUNAUTAIRE</h4>
+            <h4>ET DE LA SECURITE PUBLIQUE</h4>
+            <div><h4>PROVINCE: <i><strong>{{ naissance.provinceNaissance }}</strong></i></h4></div>
+            <h4>COMMUNE: <i><strong>{{ naissance.communeNaissance }}</strong></i></h4>
+            
+            <p>N° Acte: <i><strong>{{ naissance.numeroActeNaissance }}</strong></i></p>
+            <p>N° Volume: <i><strong>{{ naissance.numeroVolume }}</strong></i></p>
+            <div class="text-center">
+            <p><strong><u>ACTE DE NOTORIETE TENANT LIEU D’ACTE DE NAISSANCE</u></strong></p>
+            <p></p>
+            </div>
+            <p>L’an <i><strong>{{"now"|date("Y")}}</i></strong>, le <i><strong>{{"now"|date("d")}}</i></strong> ème jour du mois <i><strong>{{"now"|date("m")}}</i></strong>, </p>
+            <p>Devant nous, <i><strong>{{app.user.prenom}} {{app.user.nom}}</strong></i> officier d’état- civil à <i><strong>{{ app.user.commune }}</strong></i></p>
+            <p>Conformément à l’article cent et treize du code des personnes et des familles, ont comparu : </p>
+            <p><i><strong>{{naissance.nomCompletTemoinUn}}</strong></i> âgé de …………..ans, résidant à <i><strong>{{ naissance.adresseTemoinUn }}</strong></i>, de nationalité …………………..</p>
+            <p>Profession : <i><strong>{{ naissance.professionTemoinUn }}</strong></i>.et de <i><strong>{{ naissance.nomCompletTemoinDeux}}</i></strong>, âgé(e) de <i><strong>{{"now"|date("Y") - naissance.dateNaissance|date("Y")}}</strong></i> ans,</p>
+            résidant à <i><strong>{{ naissance.adresseTemoinDeux }}</strong></i> de nationalité  …………………… Profession :<i><strong>{{ naissance.professionTemoinDeux }}</strong></i>.</p>
+            <p>Lesquels nous ont déclaré qu’en <i><strong>{{naissance.dateNaissance|date("Y")}}</strong></i>  à <i><strong>{{ naissance.collineNaissance}} , {{ naissance.communeNaissance }}</strong></i> est né(e) le (la) nommé(e) <i><strong>{{ naissance.personne.nom }} {{ naissance.personne.prenom }}</strong></i>fils(fille) de <i><strong>{{ naissance.personne.pere.nom }} {{ naissance.personne.pere.prenom }}</strong></i> et de <i><strong>{{ naissance.personne.mere.nom }} {{ naissance.personne.mere.prenom }}</strong></i></p>
+            <p>Et que l’intéressé est dans l’impossibilité de produire un acte de naissance, qu’il (elle)………………………………</p>
+            <p>En conséquence, le présent acte de notoriété remplace valablement son acte de naissance.</p>
+            <p>Nous attestons en outre que les déclarations faites ci-dessus concordent avec les énonciations de la carte d’identité n° ………………………….délivrée a …………………..le ……/……../……………..</p>
+            <p>En foi de quoi nous avons établi le présent acte et après que connaissance du contenu  en a été faite aux comparants, l’avons signé avec eux.</p>
+            <p>………………………… DONT </p>
+            <p>ACTE ………………………</p>
+            <p></p>
+            <p></p>
+            <div>        
+            <strong>LES COMPARANTS &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; L’OFFICIER DE L’ETAT-CIVIL</strong>
+            </div>
+        </div>
+    </body>
+</html>
