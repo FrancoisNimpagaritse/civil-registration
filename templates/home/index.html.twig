@@ -95,13 +95,116 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <div class="col">
             <div class="card card-primary card-outline">
               <div class="card-header">
-                <h5 class="m-0">Logiciel complet pour la gestion de l'Etat Civil</h5>
+                <h5 class="m-0">Logiciel complet pour la gestion de l'Etat Civil - <small>avec les différents registres</small></h5>
+                <h6></h6>
               </div>
               <div class="card-body">
-                <h6 class="card-title">Que contient-il?</h6>
-                <br> <br>
+                
+                <div class="row">
+                  <div class="col-12 col-sm-4 col-md-2">
+                    <div class="info-box">
+                      <span class="info-box-icon bg-info elevation-1"><i class="fas fa-user-secret"></i></span>
+
+                      <div class="info-box-content">
+                        <span class="info-box-text">Personnes</span>
+                        <span class="info-box-number">
+                        {% if app.user %}
+                          10 451 256                          
+                        {% endif %}
+                        </span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-12 col-sm-4 col-md-2">
+                    <div class="info-box">
+                      <span class="info-box-icon bg-success elevation-1"><i class="fas fa-baby"></i></span>
+
+                      <div class="info-box-content">
+                        <span class="info-box-text">Naissances</span>
+                        <span class="info-box-number">
+                        {% if app.user %}
+                          854 685
+                        {% endif %}
+                        </span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-12 col-sm-4 col-md-2">
+                    <div class="info-box mb-3">
+                      <span class="info-box-icon bg-secondary elevation-1"><i class="fas fa-thumbs-up"></i></span>
+
+                      <div class="info-box-content">
+                        <span class="info-box-text">Adoptions</span>
+                        {% if app.user %}
+                        <span class="info-box-number">41,410</span>
+                        {% endif %}
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+
+                  <!-- fix for small devices only -->
+                  <div class="clearfix hidden-md-up"></div>
+
+                  <div class="col-12 col-sm-4 col-md-2">
+                    <div class="info-box mb-3">
+                      <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-book-dead"></i></span>
+
+                      <div class="info-box-content">
+                        <span class="info-box-text">Décès</span>
+                        {% if app.user %}
+                        <span class="info-box-number">760</span>
+                        {% endif %}
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-12 col-sm-4 col-md-2">
+                    <div class="info-box mb-3">
+                      <span class="info-box-icon bg-primary elevation-1"><i class="fas fa-ring"></i></span>
+
+                      <div class="info-box-content">
+                        <span class="info-box-text">Mariages</span>
+                        {% if app.user %}
+                        <span class="info-box-number">2,000</span>
+                        {% endif %}
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <!-- /.col -->
+                  <div class="col-12 col-sm-4 col-md-2">
+                    <div class="info-box mb-3">
+                      <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-cut"></i></span>
+
+                      <div class="info-box-content">
+                        <span class="info-box-text">Divorces</span>
+                        {% if app.user %}
+                        <span class="info-box-number">2,000</span>
+                        {% endif %}
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                </div>
+                <!-- /.row -->
+
                 <p class="card-text"><strong>Andikwa</strong> permet la gestion de tous les registres de l'Etat Civil,
-                l'impression des attestations et documents, ainsi que la production des statistiques dites "vitales" utiles pour les autres services du pays.</p>
+                l'impression des attestations et documents, ainsi que la production des statistiques "vitales" utiles pour les autres services du pays.</p>
                 </div>
             </div>            
           </div>

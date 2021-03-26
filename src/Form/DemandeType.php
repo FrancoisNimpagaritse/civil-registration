@@ -3,8 +3,10 @@
 namespace App\Form;
 
 use App\Entity\Demande;
+use App\Entity\Personne;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 
@@ -20,7 +22,14 @@ class DemandeType extends AbstractType
             ->add('lieuDemande')
             ->add('numeroRecuPaiement')
             ->add('statusDemande')
-            ->add('personne')
+            ->add('personne', EntityType::class, [
+                'label' => 'Personne demandeur',
+                'class' => Personne::class,
+                'placeholder' => '-- Choix personne --',
+                'attr' => [
+                    'class' => 'select2'
+                ]
+            ])
         ;
     }
 

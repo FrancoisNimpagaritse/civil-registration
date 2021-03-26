@@ -46,10 +46,7 @@
                     <th>Noms Epouse</th>
                     <th>Date divorce</th>
                     <th>Lieu divorce</th>
-                    <th>Profession Epoux</th>
-                    <th>Profession Epouse</th>
                     <th>Référence décision divorce</th>
-                    <th>Nombre d'enfants issus du mariage</th>
                     <th>Action</th>
                   </tr>
                   </thead>
@@ -64,10 +61,7 @@
                     <td>{{divorce.mariage.personneEpouse}}</td>
                     <td>{{divorce.datedivorce | date("d/m/Y")}}</td>
                     <td>{{divorce.lieuDecisionDivorce}}</td>
-                    <td>{{divorce.professionEpoux}}</td>
-                    <td>{{divorce.professionEpouse}}</td>
                     <td>{{divorce.referenceDecisionDivorce}}</td>
-                    <td>{{divorce.nombreEnfantsIssusMariage}}</td>
                     <td>
                       <a href="{{ path('impression_extrait_acte_divorce', {'id': divorce.id}) }}" target="_blank" class="btn btn-xs btn-primary mb-2"><i class="fas fa-print"></i></a>
                     </td>
@@ -84,10 +78,7 @@
                     <th>Noms Epouse</th>
                     <th>Date divorce</th>
                     <th>Lieu divorce</th>
-                    <th>Profession Epoux</th>
-                    <th>Profession Epouse</th>
                     <th>Référence décision divorce</th>
-                    <th>Nombre d'enfants issus du mariage</th>
                     <th>Action</th>
                   </tr>
                   </tfoot>

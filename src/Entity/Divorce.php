@@ -4,9 +4,13 @@ namespace App\Entity;
 
 use App\Repository\DivorceRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=DivorceRepository::class)
+ * @Vich\Uploadable
  */
 class Divorce
 {
@@ -57,6 +61,20 @@ class Divorce
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $referenceDecisionDivorce;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $imageCopieIntegrale;
+    
+    /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     * 
+     * @Vich\UploadableField(mapping="divorce_image", fileNameProperty="imageCopieIntegrale")
+     * 
+     * @var File|null
+     */
+    private $imageFile;
 
     public function getId(): ?int
     {
@@ -155,6 +173,65 @@ class Divorce
     public function setReferenceDecisionDivorce(?string $referenceDecisionDivorce): self
     {
         $this->referenceDecisionDivorce = $referenceDecisionDivorce;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of imageCopieIntegrale
+     */ 
+    public function getImageCopieIntegrale()
+    {
+        return $this->imageCopieIntegrale;
+    }
+
+    /**
+     * Set the value of imageCopieIntegrale
+     *
+     * @return  self
+     */ 
+    public function setImageCopieIntegrale($imageCopieIntegrale)
+    {
+        $this->imageCopieIntegrale = $imageCopieIntegrale;
+
+        return $this;
+    }
+
+     /**
+     * Get nOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @return  File|null
+     */ 
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+    
+    /**
+     * Set nOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @param  File|null  $imageFile  NOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @return  self
+     */ 
+    public function setImageFile(?File $imageFile = null): self
+    {
+        $this->imageFile = $imageFile;
+        if($this->imageFile instanceof UploadedFile)
+        {
+            $this->updatedAt = new \DateTime('now');
+        }
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }

@@ -13,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class AdminDivorceController extends AbstractController
 {
-    /**
+    /** Permet d'afficher la liste des divorces
      * @Route("/admin/divorces", name="admin_divorces_index")
      */
     public function index(DivorceRepository $repo): Response
@@ -21,6 +21,18 @@ class AdminDivorceController extends AbstractController
         $divorces = $repo->findAll();
 
         return $this->render('admin/divorce/index.html.twig', [
+            'divorces' => $divorces
+        ]);
+    }
+
+    /** Permet d'afficher la liste des divorces pour impression
+     * @Route("/admin/divorces-attestations", name="admin_divorces_attestions_index")
+     */
+    public function indexPrint(DivorceRepository $repo): Response
+    {
+        $divorces = $repo->findAll();
+
+        return $this->render('admin/divorce/index_extrait_acte_divorce.html.twig', [
             'divorces' => $divorces
         ]);
     }

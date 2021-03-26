@@ -28,6 +28,41 @@ class AdminNaissanceController extends AbstractController
     }
 
     /**
+     * Permet d'afficher la liste des naissances pour impression d'actes notoriés
+     * @Route("/admin/naissances-notorietes", name="admin_naissances_notorietes_index")
+     */
+    public function indexPrintNotoriete(NaissanceRepository $repo): Response
+    {
+        $naissances = $repo->findAll();
+        return $this->render('admin/naissance/index_acte_notoriete_naissance.html.twig', [
+            'naissances' => $naissances
+        ]);
+    }
+    /**
+     * Permet d'afficher la liste des naissances pour impression d'extraits d'actes
+     * @Route("/admin/naissances-extraits_actes", name="admin_naissances_extraits_actes_index")
+     */
+    public function indexPrintExtraitActe(NaissanceRepository $repo): Response
+    {
+        $naissances = $repo->findAll();
+        return $this->render('admin/naissance/index_extrait_acte_naissance.html.twig', [
+            'naissances' => $naissances
+        ]);
+    }
+
+    /**
+     * Permet d'afficher la liste des naissances pour impression d'extraits d'actes pour père inconnu
+     * @Route("/admin/naissances-peres-inconnus", name="admin_naissances_attestations_peres_inconnus_index")
+     */
+    public function indexPrintExtraitActeEnfantLegitime(NaissanceRepository $repo): Response
+    {
+        $naissances = $repo->findAll();
+        return $this->render('admin/naissance/index_extrait_acte_naissance_pere_inconnu.html.twig', [
+            'naissances' => $naissances
+        ]);
+    }
+
+    /**
      * Permet d'afficher les détails d'une naissance pour l'imprimer
      * 
      * @Route("/admin/naissances/show/{id}", name="admin_naissances_show")
@@ -292,7 +327,7 @@ class AdminNaissanceController extends AbstractController
                             ->setAdresseTemoinDeux($data['adresseTemoinDeux'])
                             ->setProfessionTemoinDeux($data['professionTemoinDeux'])
                             ->setPersonne($personneEnfant)
-             //ikibazo               ->setNaissanceFichierCopieIntegrale($data['naissanceImageFile'])
+             //ikibazo      ->setNaissanceFichierCopieIntegrale($data['naissanceImageFile'])
                             
                         ;
                         dd($objetNaissance);
@@ -325,4 +360,6 @@ class AdminNaissanceController extends AbstractController
             'naissance' => $naissance
         ]);
     }
+
+    
 }

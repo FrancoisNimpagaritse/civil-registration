@@ -10,3 +10,19 @@ vich_uploader:
             uri_prefix: /images/registre_naissances
             upload_destination: '%kernel.project_dir%/public/images/registre_naissances'
             namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+        divorce_image:
+            uri_prefix: /images/registre_divorces
+            upload_destination: '%kernel.project_dir%/public/images/registre_divorces'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+        deces_image:
+            uri_prefix: /images/registre_deces
+            upload_destination: '%kernel.project_dir%/public/images/registre_deces'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+        adoption_image:
+            uri_prefix: /images/registre_adoptions
+            upload_destination: '%kernel.project_dir%/public/images/registre_adoptions'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+        mariage_image:
+            uri_prefix: /images/registre_mariages
+            upload_destination: '%kernel.project_dir%/public/images/registre_mariages'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer

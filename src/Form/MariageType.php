@@ -2,14 +2,15 @@
 
 namespace App\Form;
 
-use App\Entity\EnumContratMariage;
 use App\Entity\Mariage;
 use App\Entity\Personne;
+use App\Entity\EnumContratMariage;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class MariageType extends AbstractType
 {
@@ -47,7 +48,6 @@ class MariageType extends AbstractType
             ->add('adresseTemoinEpouse')
             ->add('professionTemoinEpoux')
             ->add('professionTemoinEpouse')
-            ->add('photoPreuve')
             ->add('personneEpoux', EntityType::class, [
                 'label' => "L'époux",
                 'class' =>  Personne::class,
@@ -68,6 +68,10 @@ class MariageType extends AbstractType
                 'label' => "Type contrat mariage",
                 'class' =>  EnumContratMariage::class,
                 'placeholder' => '-- Type contrat --'                
+            ])
+            ->add('imageFile', FileType::class, [
+                'label' =>  'Copie intégrale',
+                'required' => false
             ])
         ;
     }

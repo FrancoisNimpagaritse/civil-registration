@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Andikwa ~ Registre des divorces{% endblock %}
+{% block title %}Andikwa ~ Registre des mariages{% endblock %}
 
 {% block body %}
 
@@ -11,11 +11,11 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Registre des divorces</h1>
+            <h1>Registre des mariages</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Divorces</a></li>
+              <li class="breadcrumb-item"><a href="#">Mariages</a></li>
               <li class="breadcrumb-item active">Registre</li>
             </ol>
           </div>
@@ -30,9 +30,7 @@
           <div class="col-12">            
 
             <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Liste des divorces enregistrés dans le registre d'Etat Civil</h3>
-              </div>
+              
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
@@ -44,35 +42,27 @@
                     <th>Province</th>
                     <th>Noms Epoux</th>
                     <th>Noms Epouse</th>
-                    <th>Date divorce</th>
-                    <th>Lieu divorce</th>
-                    <th>Profession Epoux</th>
-                    <th>Profession Epouse</th>
-                    <th>Référence décision divorce</th>
-                    <th>Nombre d'enfants issus du mariage</th>
+                    <th>N° Acte</th>
+                    <th>N° Volume</th>
                     <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
-                  {% for divorce in divorces %}
+                  {% for mariage in mariages %}
                   <tr>
-                    <td>{{divorce.id}}</td>
-                    <td>{{divorce.mariage.dateMariage | date("d/m/Y")}}</td>
-                    <td>{{divorce.mariage.communeMariage}}</td>
-                    <td>{{divorce.mariage.provinceMariage}}</td>
-                    <td>{{divorce.mariage.personneEpoux}}</td>
-                    <td>{{divorce.mariage.personneEpouse}}</td>
-                    <td>{{divorce.datedivorce | date("d/m/Y")}}</td>
-                    <td>{{divorce.lieuDecisionDivorce}}</td>
-                    <td>{{divorce.professionEpoux}}</td>
-                    <td>{{divorce.professionEpouse}}</td>
-                    <td>{{divorce.referenceDecisionDivorce}}</td>
-                    <td>{{divorce.nombreEnfantsIssusMariage}}</td>
+                    <td>{{mariage.id}}</td>
+                    <td>{{mariage.dateMariage | date("d/m/Y")}}</td>
+                    <td>{{mariage.communeMariage}}</td>
+                    <td>{{mariage.provinceMariage}}</td>
+                    <td>{{mariage.personneEpoux}}</td>
+                    <td>{{mariage.personneEpouse}}</td>
+                    <td>{{mariage.numeroActeMariage}}</td>
+                    <td>{{mariage.numeroVolume}}</td>
                     <td>
-                      <a href="{{ path('impression_extrait_acte_divorce', {'id': divorce.id}) }}" target="_blank" class="btn btn-xs btn-primary mb-2"><i class="fas fa-print"></i></a>
+                      <a href="{{ path('impression_extrait_acte_mariage', {'id': mariage.id}) }}" target="_blank" class="btn btn-xs btn-primary mb-2"><i class="fas fa-print"></i></a>
                     </td>
-                  </tr> 
-                  {% endfor %}
+                  </tr>                      
+                  {% endfor %}                 
                   </tbody>
                   <tfoot>
                   <tr>
@@ -82,12 +72,8 @@
                     <th>Province</th>
                     <th>Noms Epoux</th>
                     <th>Noms Epouse</th>
-                    <th>Date divorce</th>
-                    <th>Lieu divorce</th>
-                    <th>Profession Epoux</th>
-                    <th>Profession Epouse</th>
-                    <th>Référence décision divorce</th>
-                    <th>Nombre d'enfants issus du mariage</th>
+                    <th>N° Acte</th>
+                    <th>N° Volume</th>
                     <th>Action</th>
                   </tr>
                   </tfoot>

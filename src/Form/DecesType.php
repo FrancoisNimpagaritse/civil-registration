@@ -31,7 +31,7 @@ class DecesType extends AbstractType
                     ]
                 ])
             ->add('causeDeces', EntityType::class, [
-                'label' => 'Causedu décès ',
+                'label' => 'Cause du décès ',
                 'placeholder' => '-- Choix cause --',
                 'class' => EnumCauseDeces::class
                 ])

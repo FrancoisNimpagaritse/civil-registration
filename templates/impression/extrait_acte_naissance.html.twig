@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>    
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Andikwa | Extrait acte naissance</title>
+    </head>
+    <body> 
+        <div>
+            <h4>REPUBLIQUE DU BURUNDI</h4>    
+            <h4>MINISTERE DE L’INTERIEUR,</h4>
+            <h4>DU DEVELOPPEMENT COMMUNAUTAIRE</h4>
+            <h4>ET DE LA SECURITE PUBLIQUE</h4>
+            <div><h4>PROVINCE: <i><strong>{{ naissance.provinceNaissance }}</strong></i></h4></div>
+            <h4>COMMUNE: <i><strong>{{ naissance.communeNaissance }}</strong></i></h4>
+            
+            <p>N° Acte: <i><strong>{{ naissance.numeroActeNaissance }}</strong></i></p>
+            <p>N° Volume: <i><strong>{{ naissance.numeroVolume }}</strong></i></p>
+            <div class="text-center">
+            <p><strong><u>EXTRAIT D'ACTE DE NAISSANCE</u></strong></p>
+            <p></p>
+            </div>
+            <p>L’an <i><strong>{{"now"|date("Y")}}</i></strong>, le <i><strong>{{"now"|date("d")}}</i></strong> ème jour du mois <i><strong>{{"now"|date("m")}}</strong></i>, 
+            est né(e) à <i><strong>{{ naissance.collineNaissance}} , {{ naissance.communeNaissance }}</strong></i> le(la) nommé(e) <i><strong>{{naissance.personne.nom}}</strong> <strong>{{naissance.personne.prenom}}</strong></i>,</p>
+            <p>fils (fille)  de <i><strong>{{ naissance.personne.pere.nom }} {{ naissance.personne.pere.prenom }}</strong></i> âgé de <i><strong>{{"now"|date("Y") - naissance.personne.pere.dateNaissance|date("Y")}}</strong></i> ans, profession <i><strong>{{ naissance.personne.mere.profession }}</strong></i> résident à <i><strong>{{ naissance.personne.mere.communeResidence }}</strong></i>, de nationalité <i><strong>{{ naissance.personne.mere.nationalite }}</strong></i>,</p>
+            <p>et de <i><strong>{{ naissance.personne.mere.nom }} {{ naissance.personne.mere.prenom }}</strong></i> âgée de <i><strong>{{"now"|date("Y") - naissance.personne.mere.dateNaissance|date("Y")}}</strong></i> ans, profession <i><strong>{{ naissance.personne.mere.profession }}</strong></i> résident à <i><strong>{{ naissance.personne.mere.communeResidence }}</strong></i>, de nationalité <i><strong>{{ naissance.personne.mere.nationalite }}</strong></i>.
+            <p></p>
+            <p></p>
+            <p></p>
+            <div>
+                <p><strong> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; POUR EXTRAIT CERTIFIE CONFORME</strong></p>
+                <p><strong> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Le <i><strong>{{"now"|date("d")}}</strong></i>/<i><strong>{{"now"|date("m")}}</strong></i>/<i><strong>{{"now"|date("Y")}}</strong></i></strong></p>
+                <p><strong> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; L’OFFICIER DE L’ETAT-CIVIL</strong></p>
+                <p><strong> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <i>{{ app.user.nom }} {{ app.user.prenom }}</i></strong></p>
+            </div>
+        </div>
+    </body>
+</html>
+

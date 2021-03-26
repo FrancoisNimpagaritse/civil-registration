@@ -35,8 +35,8 @@
         <!-- summernote -->
         <link rel="stylesheet" href="/admin_assets/plugins/summernote/summernote-bs4.min.css">
         <!-- Select2 -->
-  <link rel="stylesheet" href="/admin_assets/plugins/select2/css/select2.min.css">
-  <link rel="stylesheet" href="/admin_assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+        <link rel="stylesheet" href="/admin_assets/plugins/select2/css/select2.min.css">
+        <link rel="stylesheet" href="/admin_assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
    
     </head>
     <body class="hold-transition sidebar-mini layout-fixed">
@@ -73,7 +73,7 @@
                 <ul class="navbar-nav ml-auto">
                     {% if app.user %}
                     <li class="nav-item">
-                    <a href="#" class="nav-link" > <strong>Bonjour {{app.user.prenom}}</strong></a>
+                    <a href="#" class="nav-link" > <strong>Bienvenue {{app.user.prenom}}</strong></a>
                     </li>
                     <li class="nav-item">
                     <a href="{{ path('account_logout') }}" class="nav-link text-danger"><i class="fas fa-user-times"></i> Déconnexion</a>
@@ -359,59 +359,100 @@
                             <i class="far fa-plus-square nav-icon"></i>
                             <p>Nouvel utilisateur</p>
                             </a>
-                        </li>
-                        
+                        </li>                        
                         </ul>
                     </li>
                     <li class="nav-header">IMPRESSION ATTESTATIONS</li>
                     <li class="nav-item">
-                        <a href="{{ path('admin_naissances_index') }}" class="nav-link">
-                        <i class="nav-icon far fa-calendar-alt"></i>
+                        <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-table"></i>
                         <p>
-                            Attestation naissance                            
+                            Attestations Naissances
+                            <i class="fas fa-angle-left right"></i>
+                            <span class="badge badge-info right"></span>
                         </p>
                         </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="pages/gallery.html" class="nav-link">
-                        <i class="nav-icon far fa-image"></i>
-                        <p>
-                            Extrait naissance
-                        </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="pages/kanban.html" class="nav-link">
-                        <i class="nav-icon fas fa-bars"></i>
-                        <p>
-                            Extrait mariage
-                        </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="pages/kanban.html" class="nav-link">
-                        <i class="nav-icon fas fa-columns"></i>
-                        <p>
-                            Attestation divorce
-                        </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="pages/kanban.html" class="nav-link">
-                        <i class="nav-icon fas fa-envelope"></i>
-                        <p>
-                            Extrait acte décès
-                        </p>
-                        </a>
+                        <ul class="nav nav-treeview">                        
+                            <li class="nav-item">
+                                <a href="{{ path('admin_naissances_notorietes_index') }}" class="nav-link">
+                                <i class="nav-icon far fa-calendar-alt"></i>
+                                <p>
+                                    Acte notoriété naissance                            
+                                </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ path('admin_naissances_extraits_actes_index') }}" class="nav-link">
+                                <i class="nav-icon far fa-image"></i>
+                                <p>
+                                    Extrait acte naissance
+                                </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ path('admin_adoptions_attestations_index') }}" class="nav-link">
+                                <i class="nav-icon far fa-envelope"></i>
+                                <p>
+                                    Certificat d'adoption
+                                </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                <i class="nav-icon far fa-envelope"></i>
+                                <p>
+                                    EAN Enfant de père inconnu
+                                </p>
+                                </a> 
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                <i class="nav-icon far fa-envelope"></i>
+                                <p>
+                                    EAN Enfant légitime
+                                </p>
+                                </a> 
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                        <i class="nav-icon far fa-envelope"></i>
+                        <i class="nav-icon fas fa-table"></i>
                         <p>
-                            Certificat d'adoption
+                            Attestations Mariages
+                            <i class="fas fa-angle-left right"></i>
+                            <span class="badge badge-info right"></span>
                         </p>
-                        </a>                        
+                        </a>
+                        <ul class="nav nav-treeview">                        
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-bars"></i>
+                                <p>
+                                    PV bancs de mariage
+                                </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ path('admin_mariages_attestations_index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-bars"></i>
+                                <p>
+                                    Extrait acte mariage
+                                </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ path('admin_divorces_attestions_index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-columns"></i>
+                                <p>
+                                    Attestation divorce
+                                </p>
+                                </a>
+                            </li>
+                        </ul>
                     </li>                    
+                    
+                    
                     
                     </ul>
                 </nav>

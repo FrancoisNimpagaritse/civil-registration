@@ -25,6 +25,19 @@ class AdminMariageController extends AbstractController
         ]);
     }
 
+    /**
+     * Permet d'afficher la liste des mariages pour impression
+     * @Route("/admin/mariages-attestions", name="admin_mariages_attestations_index")
+     */
+    public function indexPrint(MariageRepository $repo): Response
+    {
+        $mariages = $repo->findAll();
+
+        return $this->render('admin/mariage/index_extrait_acte_mariage.html.twig', [
+            'mariages' => $mariages
+        ]);
+    }
+
     /** Permet d'enregistrer un nouveau mariage
      * @Route("/admin/mariages/new", name="admin_mariages_create")
      */

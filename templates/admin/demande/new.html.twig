@@ -41,22 +41,20 @@
                   <!-- ENTETE FACTURE -->
                   {{form_start(form)}}
                   <div class="row">        
-                    <div class="col-md-2 bg-light">
+                    <div class="col-md-4 bg-light">
+                      {{form_row(form.personne)}}
+                    </div>
+                    <div class="col-md-2 bg-light"> 
                       {{form_row(form.dateDemande)}}
                     </div>
-                    <div class="col-md-3 bg-light"> 
+                    <div class="col-md-2 bg-light">
                       {{form_row(form.lieuDemande)}}
                     </div>
                     <div class="col-md-2 bg-light">
-                      {{form_row(form.statusDemande)}}
-                    </div>
-                  </div>
-                  <div class="row">
-                  <div class="col-md-2 bg-light">
                       {{form_row(form.numeroRecuPaiement)}}
                     </div>                    
-                    <div class="col-md-5 bg-light">
-                      {{form_row(form.personne)}}
+                    <div class="col-md-2 bg-light">
+                      {{form_row(form.statusDemande)}}
                     </div>
                   </div>
                   {{form_end(form)}}
